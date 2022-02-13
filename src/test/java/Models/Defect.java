@@ -12,7 +12,7 @@ public class Defect {
     int severity;
     int milestone_id;
     String[] attachments;
- DefectCustomFields custom_field;
+ DefectCustomFields[] custom_field;
     String[] tags;
 
 }

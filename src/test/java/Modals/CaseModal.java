@@ -4,6 +4,7 @@ import Elements.Drobdown;
 import Elements.Input;
 import Models.Case;
 import Pages.RepositoryPage;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,11 +12,12 @@ import org.openqa.selenium.WebDriver;
 @Log4j2
 public class CaseModal extends BaseModal {
     public static final By SAVE_CASE = By.id("save-case");
+    public static final By ADD_STEP = By.id("add-step");
 
     public CaseModal(WebDriver driver) {
         super(driver);
     }
-
+    @Step("Fill form.")
     public CaseModal fillForm(Case aCase) {
         if (aCase.getTitle() != null) {
             new Input(driver, "Title").write(aCase.getTitle());
@@ -59,12 +61,31 @@ public class CaseModal extends BaseModal {
         if (aCase.getPost_conditions() != null) {
             new Input(driver, "Post-conditions").write(aCase.getPost_conditions());
         }
+        addStepButton();
+        if (aCase.getAction() != null) {
+            new Input(driver, "Action").writeSteps(
+
+                    aCase.getAction());
+        }
+        if (aCase.getInputData() != null) {
+            new Input(driver, "Input data").writeSteps(aCase.getInputData());
+        }
+        if (aCase.getExpectedResult() != null) {
+            new Input(driver, "Expected result").writeSteps(aCase.getExpectedResult());
+        }
         return this;
     }
-
+    @Step("Save Case.")
     public RepositoryPage saveCaseButton() {
         driver.findElement(SAVE_CASE).click();
         log.info("Click save button");
         return new RepositoryPage(driver);
     }
+    @Step("Add step.")
+    public CaseModal addStepButton() {
+        driver.findElement(ADD_STEP).click();
+        log.info("Add step");
+        return this;
+    }
+
 }

@@ -5,9 +5,11 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import utils.AllureUtils;
 
 import java.io.File;
 
@@ -31,10 +33,13 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         log.error("Test "+result.getName()+" failed.");
-        this.driver = ((BaseTest)result.getInstance()).driver;
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        File distfile = new File("/D:/Qase/target/"+result.getName()+".scr.jpg");
-        FileUtils.copyFile(scrFile,distfile);
+//        this.driver = ((BaseTest)result.getInstance()).driver;
+//        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+//        File distfile = new File("/D:/Qase/target/"+result.getName()+".scr.jpg");
+//        FileUtils.copyFile(scrFile,distfile);
+        WebDriver driver =(WebDriver)(result.getTestContext().getAttribute("driver"));
+        AllureUtils.attachScreenshot(driver);
+
     }
 
     @Override

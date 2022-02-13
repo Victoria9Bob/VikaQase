@@ -30,8 +30,10 @@ public class CreateCaseTest extends BaseTest{
                 automationStatus(CaseAutomationStatus.NOT_AUTOMATED).
                 pre_conditions(pre_conditions).
                 post_conditions(post_conditions).
+                action("Open").
+                inputData("login").
+                expectedResult("isOpened").
                 build();
-        log.info("Signed in.");
         boolean isloggedIn = loginPage.openLoginPage().login(EMAIL, PASSWORD).isPageOpened();
         Assert.assertTrue(isloggedIn);
         repositoryPage.open().

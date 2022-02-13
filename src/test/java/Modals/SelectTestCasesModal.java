@@ -1,5 +1,6 @@
 package Modals;
 
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +17,7 @@ public class SelectTestCasesModal extends BaseModal {
     public SelectTestCasesModal(WebDriver driver) {
         super(driver);
     }
-
+    @Step("Select suites.")
     public SelectTestCasesModal selectCases() {
         List<WebElement> suitesColomnList = driver.findElements(SUITES_COLOMN_LOC);
         log.info("Find -"+suitesColomnList.size()+" suites.");

@@ -18,8 +18,8 @@ public class ApiProjectTest {
     @Test
     public void
     createProjectPositiveTest() {
-        String projectCode = "QWER";
-        String title = "OA14V";
+        String projectCode = "API";
+        String title = "TESTS";
         ResponceBody<Object> expectedResponse = ResponceBody.
                 builder().
                 status(true).
@@ -45,22 +45,22 @@ public class ApiProjectTest {
 
     @Test
     public void getProjectTestPositive() {
-        String code = "DEMO";
-        String title = "Demo Project";
+        String code = "API";
+        String title = "TESTS";
         Project expectedProject = Project.builder().
                 title(title).
                 code(code).
                 counts(Counts.builder().
-                        cases(11).
-                        suites(4).
-                        milestones(2).
+                        cases(0).
+                        suites(0).
+                        milestones(0).
                         defects(ProjectDefects.builder().
-                                open(1).
-                                total(2).
+                                open(0).
+                                total(0).
                                 build()).
                         runs(Runs.builder().
-                                total(4).
-                                active(1).
+                                total(0).
+                                active(0).
                                 build()).
 
                         build()).

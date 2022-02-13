@@ -4,6 +4,7 @@ import Elements.Drobdown;
 import Elements.Input;
 import Models.Suite;
 import Pages.RepositoryPage;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +16,7 @@ public class SuiteModal extends BaseModal {
     public SuiteModal(WebDriver driver) {
         super(driver);
     }
-
+    @Step("Fill form.")
     public SuiteModal fillForm(Suite suite) {
         if (suite.getSuiteName() != null) {
             new Input(driver, "Suite name").write(suite.getSuiteName());
@@ -31,7 +32,7 @@ public class SuiteModal extends BaseModal {
         }
         return this;
     }
-
+    @Step("Save suite.")
     public RepositoryPage saveSuite() {
         driver.findElement(SAVE_SUITE).click();
         log.info("Click save button");

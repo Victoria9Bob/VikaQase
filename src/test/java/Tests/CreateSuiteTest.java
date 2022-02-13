@@ -24,7 +24,6 @@ public class CreateSuiteTest extends BaseTest {
 
         boolean isloggedIn = loginPage.openLoginPage().login(EMAIL, PASSWORD).isPageOpened();
         Assert.assertTrue(isloggedIn);
-        log.info("Signed in.");
         repositoryPage.open()
                 .createSuite()
                 .fillForm(testSuite)

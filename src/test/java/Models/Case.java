@@ -25,8 +25,13 @@ public class Case {
     private CaseAutomationStatus automationStatus;
     private String pre_conditions;
     private String post_conditions;
+    private String action;
+    private String inputData;
+    private String expectedResult;
 
-    public Case(String title, CaseStatus status, String description, CaseSuite suite, CaseSeverity severity, CasePriority priority, CaseType type, CaseLayer layer, CaseIsFlaky isFlaky, CaseMilestone milestone, CaseBehavior behavior, CaseAutomationStatus automationStatus, String pre_conditions, String post_conditions) {
+    public Case(String title, CaseStatus status, String description, CaseSuite suite, CaseSeverity severity, CasePriority priority, CaseType type, CaseLayer layer, CaseIsFlaky isFlaky,
+                CaseMilestone milestone, CaseBehavior behavior, CaseAutomationStatus automationStatus, String pre_conditions, String post_conditions, String action, String inputData,
+                String expectedResult) {
         this.title = title;
         this.status = status;
         this.description = description;
@@ -41,6 +46,9 @@ public class Case {
         this.automationStatus = automationStatus;
         this.pre_conditions = pre_conditions;
         this.post_conditions = post_conditions;
+        this.action = action;
+        this.inputData = inputData;
+        this.expectedResult = expectedResult;
     }
 
     @Override
@@ -52,11 +60,13 @@ public class Case {
                 Objects.equals(suite, aCase.suite) && Objects.equals(severity, aCase.severity) && Objects.equals(priority, aCase.priority) &&
                 Objects.equals(type, aCase.type) && Objects.equals(layer, aCase.layer) && Objects.equals(isFlaky, aCase.isFlaky) && Objects.equals(milestone, aCase.milestone) &&
                 Objects.equals(behavior, aCase.behavior) && Objects.equals(automationStatus, aCase.automationStatus) && Objects.equals(pre_conditions, aCase.pre_conditions) &&
-                Objects.equals(post_conditions, aCase.post_conditions);
+                Objects.equals(post_conditions, aCase.post_conditions) && Objects.equals(action, aCase.action) && Objects.equals(inputData, aCase.inputData) &&
+                Objects.equals(expectedResult, aCase.expectedResult);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, status, description, suite, severity, priority, type, layer, isFlaky, milestone, behavior, automationStatus, pre_conditions, post_conditions);
+        return Objects.hash(title, status, description, suite, severity, priority, type, layer, isFlaky, milestone, behavior, automationStatus, pre_conditions, post_conditions,
+                action, inputData, expectedResult);
     }
 }

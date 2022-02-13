@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2" name="Regression" parallel="tests">
+<suite thread-count="2" name="Regression" parallel="classes">
     <test name="Login tests+Api+ test plan tests">
         <classes>
             <class name="Tests.LoginTest"/>
+            <class name="Tests.ApiProjectTest"/>
             <class name="Tests.CreateTestPlanTest"/>
         </classes>
     </test> <!-- Test -->

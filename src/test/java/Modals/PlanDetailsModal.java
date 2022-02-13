@@ -1,6 +1,7 @@
 package Modals;
 
 import Models.TestPlans;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ public class PlanDetailsModal extends BaseModal {
     public PlanDetailsModal(WebDriver driver) {
         super(driver);
     }
-
+    @Step("Get test plan details info.")
     public TestPlans getPlanDetailsInfo() {
         TestPlans testPlans = new TestPlans();
         String title = driver.findElement(TITLE_LOC).getText();

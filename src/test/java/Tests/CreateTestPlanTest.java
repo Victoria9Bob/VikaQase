@@ -20,7 +20,6 @@ public class CreateTestPlanTest extends BaseTest{
 
         boolean isloggedIn = loginPage.openLoginPage().login(EMAIL, PASSWORD).isPageOpened();
         Assert.assertTrue(isloggedIn);
-        log.info("Signed in.");
         testPlansPage.open().
                 createPlan().
                 fillForm(testPlans).

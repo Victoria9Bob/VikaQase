@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @Builder
 public class DefectCustomFields {
-    int id;
+    String id;
     String value;
 }

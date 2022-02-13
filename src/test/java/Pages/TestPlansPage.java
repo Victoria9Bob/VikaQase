@@ -2,13 +2,15 @@ package Pages;
 
 import Modals.PlanDetailsModal;
 import Modals.TestPlanModal;
+import io.qameta.allure.Link;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 @Log4j2
 public class TestPlansPage extends BasePage {
-    String testPlansURL = "https://app.qase.io/plan/DEMO";
+    protected final static String testPlansURL = "https://app.qase.io/plan/DEMO";
     final By TEST_PLANS_LABEL = By.xpath("//div[contains(@class,'container-fluid')]/h1");
     final By CREATE_PLAN = By.id("createButton");
     final By TEST_CASES_PAGE_LOC = By.id("tab-test-cases");
@@ -33,42 +35,44 @@ public class TestPlansPage extends BasePage {
     }
 
     @Override
+    @Step("Open page.")
+    @Link(testPlansURL)
     public TestPlansPage open() {
         driver.get(testPlansURL);
         log.info("Open page.");
         return this;
     }
-
+    @Step("Click 'Create plan'.")
     public TestPlanModal createPlan() {
         driver.findElement(CREATE_PLAN).click();
         log.info("Click 'Create plan'.");
         return new TestPlanModal(driver);
     }
-
+    @Step("Open plan.")
     public PlanDetailsModal openTestPlan(String title) {
         driver.findElement(By.xpath(String.format(open_plan_loc,title))).click();
         log.info("Open plan.");
         return new PlanDetailsModal(driver);
     }
-
+    @Step("Check, that suites are added.")
     public boolean isTestCaseAdded() {
         driver.findElement(TEST_CASES_PAGE_LOC).click();
         log.info("Check, that suites are added");
         return driver.findElements(SUITES_LIST_LOC).size() != 0;
     }
-
+    @Step("Close test plan.")
     public TestPlansPage closeTestPlan() {
         driver.findElement(CLOSE_PLAN_LOC).click();
         log.info("Close test plan.");
         return this;
     }
-
+    @Step("Confirm to delete test plan.")
     public TestPlansPage deleteTestPlan(String title) {
         driver.findElement(By.xpath(String.format(drobdown_plan_loc, title))).click();
         driver.findElement(By.xpath(String.format(delete_plan_loc, title))).click();
         log.info("Delete test plan.");
         jsClick(driver.findElement(CONFIRM_DELETE));
-        log.info("Confirm delete test plan.");
+        log.info("Confirm to delete test plan.");
         return this;
     }
 }

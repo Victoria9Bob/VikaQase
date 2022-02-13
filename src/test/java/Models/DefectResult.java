@@ -7,14 +7,13 @@ import lombok.Data;
 @Data
 @Builder
 public class DefectResult {
-    DefectCustomFields defectCustomFields;
     int id;
     String title;
     String actual_result;
     String severity;
     String status;
     String milestone_id;
-    Object[] custom_fields;
+    DefectCustomFields[] custom_fields;
     Attachments attachments;
     String created;
     String updated;

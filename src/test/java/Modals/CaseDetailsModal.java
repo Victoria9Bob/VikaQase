@@ -3,13 +3,14 @@ package Modals;
 import Elements.FormatedTextElement;
 import Enums.*;
 import Models.Case;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class CaseDetailsModal extends BaseModal {
     public CaseDetailsModal(WebDriver driver) {
         super(driver);
     }
-
+    @Step("Get case details info")
     public Case getCaseDetailsInfo(String caseName) {
         Case aCase = new Case();
         String title = new FormatedTextElement(driver, "Title").getTextTitle();
@@ -67,6 +68,18 @@ public class CaseDetailsModal extends BaseModal {
         String post_conditions = new FormatedTextElement(driver, "Postconditions").getVisibleText();
         if (post_conditions != null) {
             aCase.setPost_conditions(post_conditions);
+        }
+        String action = new FormatedTextElement(driver, "Action").getStepText(1);
+        if (action != null) {
+            aCase.setAction(action);
+        }
+        String inputData = new FormatedTextElement(driver, "Input data").getStepText(2);
+        if (inputData != null) {
+            aCase.setInputData(inputData);
+        }
+        String expectedResult = new FormatedTextElement(driver, "Expected result").getStepText(3);
+        if (expectedResult != null) {
+            aCase.setExpectedResult(expectedResult);
         }
         return aCase;
     }

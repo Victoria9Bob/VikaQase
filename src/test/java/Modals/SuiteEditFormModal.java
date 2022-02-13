@@ -3,6 +3,7 @@ package Modals;
 import Elements.EditSuiteElement;
 import Enums.SuiteParentSuite;
 import Models.Suite;
+import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 
@@ -12,7 +13,7 @@ public class SuiteEditFormModal extends BaseModal {
     public SuiteEditFormModal(WebDriver driver) {
         super(driver);
     }
-
+    @Step("Get suite details info.")
     public Suite getSuiteDetailsInfo() {
         Suite suite = new Suite();
         String suiteName = new EditSuiteElement(driver, "Suite name").getInputSuiteValue();

@@ -1,8 +1,12 @@
 package Pages;
 
+import io.qameta.allure.Link;
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class LoginPage extends BasePage {
     final static By EMAIL_INPUT = By.id("inputEmail");
     final static By PASSWORD_INPUT = By.id("inputPassword");
@@ -12,7 +16,7 @@ public class LoginPage extends BasePage {
     final static By CHECKBOX_AGREEMENT = By.name("agreement");
     final static By CONFIRM_MESSAGE = By.cssSelector("h1");
     final static By ERROR_MESSAGE = By.xpath("//div[contains(text(),'be a valid email address.')]");
-    private String LOGIN_URL = "https://app.qase.io/login";
+    protected final static String LOGIN_URL = "https://app.qase.io/login";
 
 
     public LoginPage(WebDriver driver) {
@@ -33,30 +37,44 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_MESSAGE).isDisplayed();
     }
 
+    @Step("Open page.")
+    @Link(BASE_URL)
     @Override
     public LoginPage open() {
         driver.get(BASE_URL);
+        log.info("Open page");
         return this;
     }
 
+    @Step("Open login page.")
+    @Link(LOGIN_URL)
     public LoginPage openLoginPage() {
         driver.get(LOGIN_URL);
         return this;
     }
 
+    @Step("Setting:" +
+            "email:{email}" +
+            "password:{password}")
     public RepositoryPage signUp(String email, String password) {
         driver.findElement(EMAIL_INPUT).sendKeys(email);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(CONFIRM_PASSWORD_INPUT).sendKeys(password);
         jsClick(driver.findElement(CHECKBOX_AGREEMENT));
+        log.info("Setting email and password");
         driver.findElement(CREATE_ACCOUNT_BUTTON).click();
+        log.info("Click create account");
         return new RepositoryPage(driver);
     }
 
+    @Step("Setting:" +
+            "email:{email}" +
+            "password:{password}")
     public ProjectsPage login(String email, String password) {
         driver.findElement(EMAIL_INPUT).sendKeys(email);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
+        log.info("Signed in.");
         return new ProjectsPage(driver);
     }
 }
