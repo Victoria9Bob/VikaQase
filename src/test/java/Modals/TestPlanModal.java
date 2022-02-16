@@ -10,13 +10,13 @@ import org.openqa.selenium.WebDriver;
 
 @Log4j2
 public class TestPlanModal extends BaseModal {
-    final By SAVE_PLAN = By.id("save-plan");
-    final By ADD_CASES_BUTTON = By.id("edit-plan-add-cases-button");
+    private static final By SAVE_PLAN = By.id("save-plan");
+    private static final By ADD_CASES_BUTTON = By.id("edit-plan-add-cases-button");
 
     public TestPlanModal(WebDriver driver) {
         super(driver);
     }
-    @Step("Fill form.")
+    @Step("Fill test plan form.")
     public TestPlanModal fillForm(TestPlans testPlans) {
         if (testPlans.getTitle() != null) {
             new Input(driver, "Title").write(testPlans.getTitle());

@@ -3,6 +3,8 @@ package Models;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 @Builder
@@ -13,7 +15,7 @@ public class DefectResult {
     String severity;
     String status;
     String milestone_id;
-    DefectCustomFields[] custom_fields;
+    List<DefectCustomFields> custom_fields;
     Attachments attachments;
     String created;
     String updated;

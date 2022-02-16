@@ -16,7 +16,7 @@ public class SuiteModal extends BaseModal {
     public SuiteModal(WebDriver driver) {
         super(driver);
     }
-    @Step("Fill form.")
+    @Step("Fill suite form.")
     public SuiteModal fillForm(Suite suite) {
         if (suite.getSuiteName() != null) {
             new Input(driver, "Suite name").write(suite.getSuiteName());

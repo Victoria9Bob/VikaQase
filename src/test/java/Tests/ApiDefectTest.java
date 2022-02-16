@@ -1,13 +1,10 @@
 package Tests;//package Tests;
 
 import Adapters.DefectAdapter;
-import Adapters.ProjectAdapter;
 import Models.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.util.HashMap;
-
+import java.util.Arrays;
 import static org.testng.Assert.assertEquals;
 
 public class ApiDefectTest {
@@ -38,7 +35,7 @@ public class ApiDefectTest {
                 actual_result("A").
                 severity(3).
                 milestone_id(1).
-                custom_field(DefectCustomFields.builder().id("0").value("").build()).
+                custom_field(Arrays.asList(DefectCustomFields.builder().id("0").value("").build())).
                 build();
         ResponceBody<Defect> actualResponse = defectAdapter.createDefect(defect);
         assertEquals(actualResponse, expectedResponse);
@@ -58,7 +55,7 @@ public class ApiDefectTest {
                         severity("critical").
                         status("in_progress").
                         milestone_id(null).
-                        custom_fields([DefectCustomFields.builder().id("0").value("").build()]).
+                        custom_fields(Arrays.asList(DefectCustomFields.builder().id("0").value("").build())).
                         attachments(Attachments.builder().
                                 size(0).
                                 mime("").

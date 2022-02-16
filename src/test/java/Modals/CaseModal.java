@@ -17,7 +17,7 @@ public class CaseModal extends BaseModal {
     public CaseModal(WebDriver driver) {
         super(driver);
     }
-    @Step("Fill form.")
+    @Step("Fill case form.")
     public CaseModal fillForm(Case aCase) {
         if (aCase.getTitle() != null) {
             new Input(driver, "Title").write(aCase.getTitle());

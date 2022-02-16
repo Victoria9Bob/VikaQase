@@ -8,8 +8,8 @@ import org.openqa.selenium.WebDriver;
 
 @Log4j2
 public class PlanDetailsModal extends BaseModal {
-    final By TITLE_LOC = By.xpath("//div[contains(@class,'plan')]/h1");
-    final By DESCRIPTION_LOC = By.xpath("//div[contains(@class,'markdown-area')]//div/p");
+    private final static By TITLE_LOCATOR = By.xpath("//div[contains(@class,'plan')]/h1");
+    private final static By DESCRIPTION_LOCATOR = By.xpath("//div[contains(@class,'markdown-area')]//div/p");
 
     public PlanDetailsModal(WebDriver driver) {
         super(driver);
@@ -17,12 +17,12 @@ public class PlanDetailsModal extends BaseModal {
     @Step("Get test plan details info.")
     public TestPlans getPlanDetailsInfo() {
         TestPlans testPlans = new TestPlans();
-        String title = driver.findElement(TITLE_LOC).getText();
+        String title = driver.findElement(TITLE_LOCATOR).getText();
         if (title != null) {
             log.info("Get value from title");
             testPlans.setTitle(title);
         }
-        String description = driver.findElement(DESCRIPTION_LOC).getText();
+        String description = driver.findElement(DESCRIPTION_LOCATOR).getText();
         if (description != null) {
             log.info("Get value from description");
             testPlans.setDescription(description);

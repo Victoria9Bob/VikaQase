@@ -4,7 +4,6 @@ import Modals.CaseDetailsModal;
 import Modals.CaseModal;
 import Modals.SuiteEditFormModal;
 import Modals.SuiteModal;
-import io.qameta.allure.Link;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
@@ -12,17 +11,17 @@ import org.openqa.selenium.WebDriver;
 
 @Log4j2
 public class RepositoryPage extends BasePage {
-    protected final static String repositoryURL = "https://app.qase.io/project/DEMO?view=1&suite=2";
-    final By CREATE_CASE = By.id("create-case-button");
-    final By CREATE_SUITE = By.id("create-suite-button");
-    private String EDIT_SUITE = "//span[contains(text(),'%s')]//following::button[2]";
-    private String DELETE_SUITE = "//span[contains(text(),'%s')]//following::button[4]";
-    private String CONFIRM_DELETE_SUITE = "button[type*='submit']";
-    private String CANCEL_BUTTON = "Cancel";
-    private String MAX_WINDOW_BUTTON = "//button[contains(@class,'style_modeBtn-2mioU')]";
-    private String OPEN_CASE_BUTTON = "//span[contains(text(),'%s')]/ancestor::td";
-    private String DELETE_CASE_BUTTON = "//div[contains(@class,'caseActions')]/button[2]";
-    private String DELETE_CASE_CONFIRM = "//div[contains(@class,'modal-footer')]/button[2]";
+    protected final static String REPOSITORY_URL = "https://app.qase.io/project/DEMO?view=1&suite=2";
+    private static final By CREATE_CASE = By.id("create-case-button");
+    private static final By CREATE_SUITE = By.id("create-suite-button");
+    private static final String EDIT_SUITE = "//span[contains(text(),'%s')]//following::button[2]";
+    private static final String DELETE_SUITE = "//span[contains(text(),'%s')]//following::button[4]";
+    private static final String CONFIRM_DELETE_SUITE = "button[type*='submit']";
+    private static final String CANCEL_BUTTON = "Cancel";
+    private static final String MAX_WINDOW_BUTTON = "//button[contains(@class,'style_modeBtn-2mioU')]";
+    private static final String OPEN_CASE_BUTTON = "//span[contains(text(),'%s')]/ancestor::td";
+    private static final String DELETE_CASE_BUTTON = "//div[contains(@class,'caseActions')]/button[2]";
+    private static final String DELETE_CASE_CONFIRM = "//div[contains(@class,'modal-footer')]/button[2]";
 
     public RepositoryPage(WebDriver driver) {
         super(driver);
@@ -38,11 +37,10 @@ public class RepositoryPage extends BasePage {
         return false;
     }
 
-    @Step("Open page.")
-    @Link(repositoryURL)
+    @Step("Open repository page")
     @Override
     public RepositoryPage open() {
-        driver.get(repositoryURL);
+        driver.get(REPOSITORY_URL);
         log.info("Open page.");
         return this;
     }

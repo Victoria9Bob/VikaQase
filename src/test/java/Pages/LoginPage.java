@@ -8,14 +8,14 @@ import org.openqa.selenium.WebDriver;
 
 @Log4j2
 public class LoginPage extends BasePage {
-    final static By EMAIL_INPUT = By.id("inputEmail");
-    final static By PASSWORD_INPUT = By.id("inputPassword");
-    final static By CONFIRM_PASSWORD_INPUT = By.id("inputPasswordConfirm");
-    final static By CREATE_ACCOUNT_BUTTON = By.cssSelector("button");
-    final static By LOGIN_BUTTON = By.cssSelector("button");
-    final static By CHECKBOX_AGREEMENT = By.name("agreement");
-    final static By CONFIRM_MESSAGE = By.cssSelector("h1");
-    final static By ERROR_MESSAGE = By.xpath("//div[contains(text(),'be a valid email address.')]");
+    private final static By EMAIL_INPUT = By.id("inputEmail");
+    private final static By PASSWORD_INPUT = By.id("inputPassword");
+    private final static By CONFIRM_PASSWORD_INPUT = By.id("inputPasswordConfirm");
+    private final static By CREATE_ACCOUNT_BUTTON = By.cssSelector("button");
+    private final static By LOGIN_BUTTON = By.cssSelector("button");
+    private final static By CHECKBOX_AGREEMENT = By.name("agreement");
+    private final static By CONFIRM_MESSAGE = By.cssSelector("h1");
+    private final static By ERROR_MESSAGE = By.xpath("//div[contains(text(),'be a valid email address.')]");
     protected final static String LOGIN_URL = "https://app.qase.io/login";
 
 
@@ -47,7 +47,6 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Open login page.")
-    @Link(LOGIN_URL)
     public LoginPage openLoginPage() {
         driver.get(LOGIN_URL);
         return this;
