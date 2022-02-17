@@ -2,23 +2,23 @@ package Tests;
 
 import Enums.SuiteParentSuite;
 import Models.Suite;
+import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 @Listeners(TestListener.class)
 public class CreateSuiteTest extends BaseTest {
-    String suiteName = "1suite";
+    Faker faker = new Faker();
+    String suiteName = faker.name().title();
     Suite testSuite = new Suite();
 
     @BeforeMethod
     public void setUp() {
-        String description = "ghkgkig";
-        String preconditions = "eljfdw";
         testSuite = Suite.builder().
                 suiteName(suiteName).
                 parentSuite(SuiteParentSuite.PROJECTS).
-                description(description).
-                preconditions(preconditions).
+                description(faker.chuckNorris().fact()).
+                preconditions(faker.funnyName().name()).
                 build();
 
         boolean isloggedIn = loginPage.openLoginPage().login(EMAIL, PASSWORD).isPageOpened();

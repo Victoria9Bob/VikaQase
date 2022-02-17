@@ -1,6 +1,7 @@
 package Tests;
 
 import Models.TestPlans;
+import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -8,15 +9,15 @@ import org.testng.annotations.*;
 @Log4j2
 @Listeners(TestListener.class)
 public class CreateTestPlanTest extends BaseTest {
-    String title = "1plan";
+    Faker faker = new Faker();
+    String title = faker.name().title();
     TestPlans testPlans = new TestPlans();
 
     @BeforeMethod
     public void setUp() {
-        String description = "Testing";
         testPlans = TestPlans.builder().
                 title(title).
-                description(description).
+                description(faker.chuckNorris().fact()).
                 build();
 
         boolean isloggedIn = loginPage.openLoginPage().login(EMAIL, PASSWORD).isPageOpened();

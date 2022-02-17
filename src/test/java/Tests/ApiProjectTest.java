@@ -2,13 +2,17 @@ package Tests;
 
 import Adapters.ProjectAdapter;
 import Models.*;
+import com.github.javafaker.Faker;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class ApiProjectTest {
+    Faker faker = new Faker();
     ProjectAdapter projectAdapter;
+    private final String projectCode = faker.file().fileName();
+    private final String title = faker.name().title();
 
     @BeforeClass
     public void setUp() {
@@ -18,8 +22,7 @@ public class ApiProjectTest {
     @Test
     public void
     createProjectPositiveTest() {
-        String projectCode = "API";
-        String title = "TESTS";
+
         ResponceBody<Object> expectedResponse = ResponceBody.
                 builder().
                 status(true).
@@ -39,17 +42,14 @@ public class ApiProjectTest {
 
     @Test
     public void getProjectBTestNegative() {
-        String code = "DE12";
-        projectAdapter.getProject(code, 404);
+        projectAdapter.getProject(projectCode, 404);
     }
 
     @Test
     public void getProjectTestPositive() {
-        String code = "API";
-        String title = "TESTS";
         Project expectedProject = Project.builder().
                 title(title).
-                code(code).
+                code(projectCode).
                 counts(Counts.builder().
                         cases(0).
                         suites(0).
@@ -66,7 +66,7 @@ public class ApiProjectTest {
                         build()).
                 build();
         ResponceBody<Object> expectedResponceResult = ResponceBody.builder().status(true).result(expectedProject).build();
-        ResponceBody<Project> actualResponceBody = projectAdapter.getProject(code, 200);
+        ResponceBody<Project> actualResponceBody = projectAdapter.getProject(projectCode, 200);
         assertEquals(actualResponceBody, expectedResponceResult);
     }
 

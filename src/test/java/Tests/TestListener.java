@@ -10,7 +10,6 @@ import utils.AllureUtils;
 
 @Log4j2
 public class TestListener implements ITestListener {
-    private Object driver;
 
     @Override
     public void onTestStart(ITestResult result) {
