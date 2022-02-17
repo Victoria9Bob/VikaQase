@@ -2,11 +2,9 @@ package Tests;
 
 import Enums.SuiteParentSuite;
 import Models.Suite;
-import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-@Log4j2
 @Listeners(TestListener.class)
 public class CreateSuiteTest extends BaseTest {
     String suiteName = "1suite";
@@ -30,10 +28,10 @@ public class CreateSuiteTest extends BaseTest {
     @Test
     public void createSuiteWithAllData() throws InterruptedException {
         repositoryPage.open()
-                .createSuite()
+                .clickCreateSuiteButton()
                 .fillForm(testSuite)
-                .saveSuite();
-        Suite actualSuiteDetailsInfo = repositoryPage.editSuiteButton(suiteName).getSuiteDetailsInfo();
+                .clickSaveSuite();
+        Suite actualSuiteDetailsInfo = repositoryPage.clickEditSuiteButton(suiteName).getSuiteDetailsInfo();
         Assert.assertEquals(actualSuiteDetailsInfo, testSuite, "Suite details are not correct");
 
     }

@@ -40,57 +40,57 @@ public class RepositoryPage extends BasePage {
     @Step("Open repository page")
     @Override
     public RepositoryPage open() {
-        driver.get(REPOSITORY_URL);
         log.info("Open page.");
+        driver.get(REPOSITORY_URL);
         return this;
     }
 
     @Step("Click 'Create case'.")
-    public CaseModal createCase() {
-        driver.findElement(CREATE_CASE).click();
+    public CaseModal clickCreateCaseButton() {
         log.info("Click 'Create case'.");
+        driver.findElement(CREATE_CASE).click();
         return new CaseModal(driver);
     }
 
     @Step("Click 'Create Suite'.")
-    public SuiteModal createSuite() {
-        driver.findElement(CREATE_SUITE).click();
+    public SuiteModal clickCreateSuiteButton() {
         log.info("Click 'Create Suite'.");
+        driver.findElement(CREATE_SUITE).click();
         return new SuiteModal(driver);
     }
 
     @Step("Click edit suite button.")
-    public SuiteEditFormModal editSuiteButton(String suiteName) {
-        driver.findElement(By.xpath(String.format(EDIT_SUITE, suiteName))).click();
+    public SuiteEditFormModal clickEditSuiteButton(String suiteName) {
         log.info("Click edit suite button.");
+        driver.findElement(By.xpath(String.format(EDIT_SUITE, suiteName))).click();
         return new SuiteEditFormModal(driver);
     }
 
     @Step("Delete suite:{suiteName}.")
     public SuiteEditFormModal deleteTestSuite(String suiteName) {
         jsClick(driver.findElement(By.linkText(CANCEL_BUTTON)));
-        driver.findElement(By.xpath(String.format(DELETE_SUITE, suiteName))).click();
         log.info("Click delete suite button");
-        jsClick(driver.findElement(By.cssSelector(CONFIRM_DELETE_SUITE)));
+        driver.findElement(By.xpath(String.format(DELETE_SUITE, suiteName))).click();
         log.info("Test suite is deleted");
+        jsClick(driver.findElement(By.cssSelector(CONFIRM_DELETE_SUITE)));
         return new SuiteEditFormModal(driver);
     }
 
     @Step("Delete case.")
     public CaseDetailsModal deleteTestCase() {
-        jsClick(driver.findElement(By.xpath(DELETE_CASE_BUTTON)));
         log.info("Click delete case button");
-        jsClick(driver.findElement(By.xpath(DELETE_CASE_CONFIRM)));
+        jsClick(driver.findElement(By.xpath(DELETE_CASE_BUTTON)));
         log.info("Test case is deleted");
+        jsClick(driver.findElement(By.xpath(DELETE_CASE_CONFIRM)));
         return new CaseDetailsModal(driver);
     }
 
     @Step("Open case.")
     public CaseDetailsModal openCase(String caseName) {
-        driver.findElement(By.xpath(String.format(OPEN_CASE_BUTTON, caseName))).click();
         log.info("Open Case.");
-        jsClick(driver.findElement(By.xpath(MAX_WINDOW_BUTTON)));
+        driver.findElement(By.xpath(String.format(OPEN_CASE_BUTTON, caseName))).click();
         log.info("Open big window.");
+        jsClick(driver.findElement(By.xpath(MAX_WINDOW_BUTTON)));
         return new CaseDetailsModal(driver);
     }
 }

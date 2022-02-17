@@ -27,15 +27,15 @@ public class TestPlanModal extends BaseModal {
         return this;
     }
     @Step("Save plan.")
-    public TestPlansPage savePlan() {
-        driver.findElement(SAVE_PLAN).click();
+    public TestPlansPage clickSavePlan() {
         log.info("Click save button");
+        driver.findElement(SAVE_PLAN).click();
         return new TestPlansPage(driver);
     }
     @Step("Add cases.")
-    public SelectTestCasesModal addCases() {
-        jsClick(driver.findElement(ADD_CASES_BUTTON));
+    public SelectTestCasesModal clickAddCases() {
         log.info("Add cases.");
+        jsClick(driver.findElement(ADD_CASES_BUTTON));
         return new SelectTestCasesModal(driver);
     }
 }

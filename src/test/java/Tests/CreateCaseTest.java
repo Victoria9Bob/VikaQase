@@ -2,12 +2,10 @@ package Tests;
 
 import Enums.*;
 import Models.Case;
-import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 @Listeners(TestListener.class)
-@Log4j2
 public class CreateCaseTest extends BaseTest {
     String caseName = "case2";
     Case testCase = new Case();
@@ -40,9 +38,9 @@ public class CreateCaseTest extends BaseTest {
     @Test
     public void createCaseWithAllData() throws InterruptedException {
         repositoryPage.open().
-                createCase().
+                clickCreateCaseButton().
                 fillForm(testCase).
-                saveCaseButton();
+                clickSaveCaseButton();
         Case actualCaseDetailsInfo = repositoryPage.openCase(caseName).getCaseDetailsInfo(caseName);
         Assert.assertEquals(actualCaseDetailsInfo, testCase, "Suite details are not correct");
 

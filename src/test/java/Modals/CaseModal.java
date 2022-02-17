@@ -76,15 +76,15 @@ public class CaseModal extends BaseModal {
         return this;
     }
     @Step("Save Case.")
-    public RepositoryPage saveCaseButton() {
-        driver.findElement(SAVE_CASE).click();
+    public RepositoryPage clickSaveCaseButton() {
         log.info("Click save button");
+        driver.findElement(SAVE_CASE).click();
         return new RepositoryPage(driver);
     }
     @Step("Add step.")
     public CaseModal addStepButton() {
-        driver.findElement(ADD_STEP).click();
         log.info("Add step");
+        driver.findElement(ADD_STEP).click();
         return this;
     }
 

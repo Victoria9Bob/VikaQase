@@ -41,13 +41,14 @@ public class LoginPage extends BasePage {
     @Link(BASE_URL)
     @Override
     public LoginPage open() {
-        driver.get(BASE_URL);
         log.info("Open page");
+        driver.get(BASE_URL);
         return this;
     }
 
     @Step("Open login page.")
     public LoginPage openLoginPage() {
+        log.info("Open login page.");
         driver.get(LOGIN_URL);
         return this;
     }
@@ -56,13 +57,13 @@ public class LoginPage extends BasePage {
             "email:{email}" +
             "password:{password}")
     public RepositoryPage signUp(String email, String password) {
+        log.info("Setting email and password");
         driver.findElement(EMAIL_INPUT).sendKeys(email);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(CONFIRM_PASSWORD_INPUT).sendKeys(password);
         jsClick(driver.findElement(CHECKBOX_AGREEMENT));
-        log.info("Setting email and password");
-        driver.findElement(CREATE_ACCOUNT_BUTTON).click();
         log.info("Click create account");
+        driver.findElement(CREATE_ACCOUNT_BUTTON).click();
         return new RepositoryPage(driver);
     }
 

@@ -4,10 +4,8 @@ import Elements.EditSuiteElement;
 import Enums.SuiteParentSuite;
 import Models.Suite;
 import io.qameta.allure.Step;
-import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 
-@Log4j2
 public class SuiteEditFormModal extends BaseModal {
 
     public SuiteEditFormModal(WebDriver driver) {

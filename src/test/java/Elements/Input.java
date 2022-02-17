@@ -14,14 +14,12 @@ public class Input extends BaseElement {
     }
 
     public void write(String text) {
-        driver.findElement(By.xpath(String.format(TEXT_INPUT_LOCATOR, label))).sendKeys(text);
         log.info(String.format("Setting %s into %s input", text, label));
-
+        driver.findElement(By.xpath(String.format(TEXT_INPUT_LOCATOR, label))).sendKeys(text);
     }
 
     public void writeSteps(String text) {
-        driver.findElement(By.xpath(String.format(TEXT_INPUT_STEP_LOCATOR, label))).sendKeys(text);
         log.info(String.format("Setting %s into %s input", text, label));
-
+        driver.findElement(By.xpath(String.format(TEXT_INPUT_STEP_LOCATOR, label))).sendKeys(text);
     }
 }

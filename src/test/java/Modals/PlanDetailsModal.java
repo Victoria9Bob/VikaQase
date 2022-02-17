@@ -14,17 +14,19 @@ public class PlanDetailsModal extends BaseModal {
     public PlanDetailsModal(WebDriver driver) {
         super(driver);
     }
+
     @Step("Get test plan details info.")
     public TestPlans getPlanDetailsInfo() {
         TestPlans testPlans = new TestPlans();
+        log.info("Get value from title");
         String title = driver.findElement(TITLE_LOCATOR).getText();
         if (title != null) {
-            log.info("Get value from title");
             testPlans.setTitle(title);
         }
+
+        log.info("Get value from description");
         String description = driver.findElement(DESCRIPTION_LOCATOR).getText();
         if (description != null) {
-            log.info("Get value from description");
             testPlans.setDescription(description);
         }
         return testPlans;

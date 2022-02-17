@@ -15,10 +15,10 @@ public class Drobdown extends BaseElement {
     }
 
     public void selectOption(String optionName) {
+        log.info(String.format("Select an option: %s", optionName));
         driver.findElement(By.xpath(String.format(DROPDOWN_LOCATOR, label))).click();
         WebElement optionToClick = driver.findElement(By.xpath(String.format(OPTION_LOCATOR, label, optionName)));
         scrollIntoView(optionToClick);
         optionToClick.click();
-        log.info(String.format("Select an option: %s", optionName));
     }
 }

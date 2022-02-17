@@ -22,13 +22,14 @@ public class SelectTestCasesModal extends BaseModal {
         List<WebElement> suitesColomnList = driver.findElements(SUITES_COLUMN_LOCATOR);
         log.info("Find -"+suitesColomnList.size()+" suites.");
         for (int i = 0; i < suitesColomnList.size(); i++) {
+            log.info("Select suite -" + i);
                 driver.findElement(By.xpath(String.format(CHECKBOX_LOCATOR,i))).click();
-                log.info("Select suite -" + i);
             }
         return this;
     }
 
     public TestPlanModal clickDoneButton(){
+        log.info("Click done button");
         jsClick(driver.findElement(DONE_BUTTON_LOCATOR));
         return new TestPlanModal(driver);
     }

@@ -33,9 +33,9 @@ public class SuiteModal extends BaseModal {
         return this;
     }
     @Step("Save suite.")
-    public RepositoryPage saveSuite() {
-        driver.findElement(SAVE_SUITE).click();
+    public RepositoryPage clickSaveSuite() {
         log.info("Click save button");
+        driver.findElement(SAVE_SUITE).click();
         return new RepositoryPage(driver);
     }
 }

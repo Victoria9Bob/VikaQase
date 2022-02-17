@@ -12,75 +12,75 @@ public class CaseDetailsModal extends BaseModal {
     }
     @Step("Get case details info")
     public Case getCaseDetailsInfo(String caseName) {
-        Case aCase = new Case();
+        Case resultCase = new Case();
         String title = new FormatedTextElement(driver, "Title").getTextTitle();
         if (title != null) {
-            aCase.setTitle(title);
+            resultCase.setTitle(title);
         }
         String status = new FormatedTextElement(driver, "Status").getValue();
         if (status != null) {
-            aCase.setStatus(CaseStatus.fromString(status));
+            resultCase.setStatus(CaseStatus.fromString(status));
         }
         String description = new FormatedTextElement(driver, "Description").getVisibleText();
         if (description != null) {
-            aCase.setDescription(description);
+            resultCase.setDescription(description);
         }
         String suite = new FormatedTextElement(driver, "Suite").getSuiteName(caseName);
         if (suite != null) {
-            aCase.setSuite(CaseSuite.fromString(suite));
+            resultCase.setSuite(CaseSuite.fromString(suite));
         }
         String severity = new FormatedTextElement(driver, "Severity").getValue();
         if (severity != null) {
-            aCase.setSeverity(CaseSeverity.fromString(severity));
+            resultCase.setSeverity(CaseSeverity.fromString(severity));
         }
         String priority = new FormatedTextElement(driver, "Priority").getValue();
         if (priority != null) {
-            aCase.setPriority(CasePriority.fromString(priority));
+            resultCase.setPriority(CasePriority.fromString(priority));
         }
         String type = new FormatedTextElement(driver, "Type").getValue();
         if (type != null) {
-            aCase.setType(CaseType.fromString(type));
+            resultCase.setType(CaseType.fromString(type));
         }
         String layer = new FormatedTextElement(driver, "Layer").getValue();
         if (layer != null) {
-            aCase.setLayer(CaseLayer.fromString(layer));
+            resultCase.setLayer(CaseLayer.fromString(layer));
         }
         String isFlaky = new FormatedTextElement(driver, "Is Flaky").getValue();
         if (isFlaky != null) {
-            aCase.setIsFlaky(CaseIsFlaky.fromString(isFlaky));
+            resultCase.setIsFlaky(CaseIsFlaky.fromString(isFlaky));
         }
         String milestone = new FormatedTextElement(driver, "Milestone").getValue();
         if (milestone != null) {
-            aCase.setMilestone(CaseMilestone.fromString(milestone));
+            resultCase.setMilestone(CaseMilestone.fromString(milestone));
         }
         String behavior = new FormatedTextElement(driver, "Behavior").getValue();
         if (behavior != null) {
-            aCase.setBehavior(CaseBehavior.fromString(behavior));
+            resultCase.setBehavior(CaseBehavior.fromString(behavior));
         }
         String automationStatus = new FormatedTextElement(driver, "Automation").getValue();
         if (automationStatus != null) {
-            aCase.setAutomationStatus(CaseAutomationStatus.fromString(automationStatus));
+            resultCase.setAutomationStatus(CaseAutomationStatus.fromString(automationStatus));
         }
         String pre_conditions = new FormatedTextElement(driver, "Preconditions").getVisibleText();
         if (pre_conditions != null) {
-            aCase.setPre_conditions(pre_conditions);
+            resultCase.setPre_conditions(pre_conditions);
         }
         String post_conditions = new FormatedTextElement(driver, "Postconditions").getVisibleText();
         if (post_conditions != null) {
-            aCase.setPost_conditions(post_conditions);
+            resultCase.setPost_conditions(post_conditions);
         }
         String action = new FormatedTextElement(driver, "Action").getStepText(1);
         if (action != null) {
-            aCase.setAction(action);
+            resultCase.setAction(action);
         }
         String inputData = new FormatedTextElement(driver, "Input data").getStepText(2);
         if (inputData != null) {
-            aCase.setInputData(inputData);
+            resultCase.setInputData(inputData);
         }
         String expectedResult = new FormatedTextElement(driver, "Expected result").getStepText(3);
         if (expectedResult != null) {
-            aCase.setExpectedResult(expectedResult);
+            resultCase.setExpectedResult(expectedResult);
         }
-        return aCase;
+        return resultCase;
     }
 }

@@ -26,12 +26,12 @@ public class CreateTestPlanTest extends BaseTest {
     @Test
     public void createTestPlanPositive() throws InterruptedException {
         testPlansPage.open().
-                createPlan().
+                clickCreatePlanButton().
                 fillForm(testPlans).
-                addCases().
+                clickAddCases().
                 selectCases().
                 clickDoneButton().
-                savePlan();
+                clickSavePlan();
 
         TestPlans actualPlanDetailsInfo = testPlansPage.openTestPlan(title).getPlanDetailsInfo();
         Assert.assertEquals(actualPlanDetailsInfo, testPlans, "Plan details are not correct");
@@ -40,7 +40,7 @@ public class CreateTestPlanTest extends BaseTest {
 
     @AfterMethod
     public void setOut() {
-        testPlansPage.closeTestPlan().deleteTestPlan(title);
+        testPlansPage.closeTestPlanButton().deleteTestPlan(title);
 //        Assert
     }
 }
