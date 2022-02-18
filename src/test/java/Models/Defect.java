@@ -13,8 +13,8 @@ public class Defect {
     String actual_result;
     int severity;
     int milestone_id;
-    String[] attachments;
- List<DefectCustomFields> custom_field;
-    String[] tags;
+    List<Attachments> attachments;
+    List<DefectCustomFields> custom_field;
+    List<Tags> tags;
 
 }

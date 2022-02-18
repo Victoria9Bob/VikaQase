@@ -10,10 +10,10 @@ import org.testng.annotations.*;
 @Listeners(TestListener.class)
 public class CreateTestPlanTest extends BaseTest {
     Faker faker = new Faker();
-    String title = faker.name().title();
+    private final String title = faker.name().title();
     TestPlans testPlans = new TestPlans();
 
-    @BeforeMethod
+    @BeforeMethod(groups = "Regression")
     public void setUp() {
         testPlans = TestPlans.builder().
                 title(title).
@@ -24,7 +24,7 @@ public class CreateTestPlanTest extends BaseTest {
         Assert.assertTrue(isloggedIn);
     }
 
-    @Test
+    @Test(groups = "Regression")
     public void createTestPlanPositive() throws InterruptedException {
         testPlansPage.open().
                 clickCreatePlanButton().
@@ -39,7 +39,7 @@ public class CreateTestPlanTest extends BaseTest {
         testPlansPage.isTestCaseAdded();
     }
 
-    @AfterMethod
+    @AfterMethod(groups = "Regression")
     public void setOut() {
         testPlansPage.closeTestPlanButton().deleteTestPlan(title);
 //        Assert

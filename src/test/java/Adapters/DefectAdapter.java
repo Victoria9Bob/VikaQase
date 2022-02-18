@@ -10,7 +10,7 @@ public class DefectAdapter extends BaseAdapter{
     public ResponceBody<Defect> createDefect(Defect defect){
         return gson.fromJson(post(DEFECT_URI,gson.toJson(defect),200),new TypeToken<ResponceBody<Defect>>(){}.getType());
     }
-    public ResponceBody<DefectResult> getDefect(String projectCode, String defectId, int expectedStatusCode){
+    public ResponceBody<DefectResult> getDefect(String projectCode, int defectId, int expectedStatusCode){
         return gson.fromJson(get(DEFECT_URI+projectCode+defectId, expectedStatusCode),new TypeToken<ResponceBody<DefectResult>>(){}.getType());
     }
 }

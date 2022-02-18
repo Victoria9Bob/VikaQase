@@ -6,20 +6,22 @@ import com.github.javafaker.Faker;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Locale;
+
 import static org.testng.Assert.assertEquals;
 
 public class ApiProjectTest {
     Faker faker = new Faker();
     ProjectAdapter projectAdapter;
-    private final String projectCode = faker.file().fileName();
-    private final String title = faker.name().title();
+    private final String projectCode = faker.name().firstName().toUpperCase(Locale.ROOT);
+    private final String title = faker.name().lastName();
 
-    @BeforeClass
+    @BeforeClass(groups = "ApiTests")
     public void setUp() {
         projectAdapter = new ProjectAdapter();
     }
 
-    @Test
+    @Test(groups = "ApiTests")
     public void
     createProjectPositiveTest() {
 
@@ -40,12 +42,12 @@ public class ApiProjectTest {
         assertEquals(actualResponse, expectedResponse);
     }
 
-    @Test
+    @Test(groups = "ApiTests")
     public void getProjectBTestNegative() {
         projectAdapter.getProject(projectCode, 404);
     }
 
-    @Test
+    @Test(groups = "ApiTests")
     public void getProjectTestPositive() {
         Project expectedProject = Project.builder().
                 title(title).

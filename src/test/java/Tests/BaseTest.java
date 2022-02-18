@@ -29,8 +29,8 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         testContext.setAttribute("driver",driver);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         loginPage = new LoginPage(driver);
         repositoryPage = new RepositoryPage(driver);
         testPlansPage = new TestPlansPage(driver);

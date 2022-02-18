@@ -9,10 +9,10 @@ import org.testng.annotations.*;
 @Listeners(TestListener.class)
 public class CreateSuiteTest extends BaseTest {
     Faker faker = new Faker();
-    String suiteName = faker.name().title();
+    private final String suiteName = faker.name().title();
     Suite testSuite = new Suite();
 
-    @BeforeMethod
+    @BeforeMethod(groups = "Regression")
     public void setUp() {
         testSuite = Suite.builder().
                 suiteName(suiteName).
@@ -25,7 +25,7 @@ public class CreateSuiteTest extends BaseTest {
         Assert.assertTrue(isloggedIn);
     }
 
-    @Test
+    @Test(groups = "Regression")
     public void createSuiteWithAllData() throws InterruptedException {
         repositoryPage.open()
                 .clickCreateSuiteButton()
@@ -36,7 +36,7 @@ public class CreateSuiteTest extends BaseTest {
 
     }
 
-    @AfterMethod
+    @AfterMethod(groups = "Regression")
     public void setOut() {
         repositoryPage.deleteTestSuite(suiteName);
 //        Assert

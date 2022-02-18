@@ -10,11 +10,11 @@ import org.testng.annotations.*;
 public class CreateCaseTest extends BaseTest {
     Faker faker = new Faker();
     Case testCase = new Case();
-    String caseName = faker.name().title();
+    private final String caseName = faker.name().title();
 
 
 
-    @BeforeMethod
+    @BeforeMethod(groups = "Smoke")
     public void setUp() {
         testCase = Case.builder().
                 title(caseName).
@@ -39,7 +39,7 @@ public class CreateCaseTest extends BaseTest {
         Assert.assertTrue(isloggedIn);
     }
 
-    @Test
+    @Test(groups = "Smoke")
     public void createCaseWithAllData() throws InterruptedException {
         repositoryPage.open().
                 clickCreateCaseButton().
@@ -50,7 +50,7 @@ public class CreateCaseTest extends BaseTest {
 
     }
 
-    @AfterMethod
+    @AfterMethod(groups = "Smoke")
     public void setOut() {
         repositoryPage.deleteTestCase();
 //       Написать Assert

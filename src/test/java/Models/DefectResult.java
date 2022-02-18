@@ -24,5 +24,5 @@ public class DefectResult {
     int project_id;
     int member_id;
     String external_data;
-    Tags tags;
+    List<Tags> tags;
 }

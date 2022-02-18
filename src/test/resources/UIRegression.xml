@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="Regression" parallel="classes">
+    <groups>
+        <run>
+            <include name="Regression"/>
+        </run>
+    </groups>
+    <test name="Suite and login tests">
+        <classes>
+            <class name="Tests.CreateSuiteTest"></class>
+            <class name="Tests.LoginTest"></class>
+        </classes>
+    </test>
+    <test name="Case and plan tests">
+        <classes>
+            <class name="Tests.CreateCaseTest"></class>
+            <class name="Tests.CreateTestPlanTest"></class>
+        </classes>
+    </test>
+</suite>
