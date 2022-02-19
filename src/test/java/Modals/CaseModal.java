@@ -2,6 +2,7 @@ package Modals;
 
 import Elements.Dropdown;
 import Elements.Input;
+import Elements.InputSteps;
 import Models.Case;
 import Pages.RepositoryPage;
 import io.qameta.allure.Step;
@@ -63,15 +64,15 @@ public class CaseModal extends BaseModal {
         }
         addStepButton();
         if (aCase.getAction() != null) {
-            new Input(driver, "Action").writeSteps(
+            new InputSteps(driver, "Action").writeSteps(
 
                     aCase.getAction());
         }
         if (aCase.getInputData() != null) {
-            new Input(driver, "Input data").writeSteps(aCase.getInputData());
+            new InputSteps(driver, "Input data").writeSteps(aCase.getInputData());
         }
         if (aCase.getExpectedResult() != null) {
-            new Input(driver, "Expected result").writeSteps(aCase.getExpectedResult());
+            new InputSteps(driver, "Expected result").writeSteps(aCase.getExpectedResult());
         }
         return this;
     }

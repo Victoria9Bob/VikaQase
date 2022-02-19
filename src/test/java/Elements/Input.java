@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 @Log4j2
 public class Input extends BaseElement {
     private final static String TEXT_INPUT_LOCATOR = "//*[text()='%s']/ancestor::div/div/input";
-    private final static String TEXT_INPUT_STEP_LOCATOR = "//*[text()='%s']/ancestor::div[contains(@id,'Group')]//p";
 
     public Input(WebDriver driver, String label) {
         super(driver, label);
@@ -16,10 +15,5 @@ public class Input extends BaseElement {
     public void write(String text) {
         log.info(String.format("Setting %s into %s input", text, label));
         driver.findElement(By.xpath(String.format(TEXT_INPUT_LOCATOR, label))).sendKeys(text);
-    }
-
-    public void writeSteps(String text) {
-        log.info(String.format("Setting %s into %s input", text, label));
-        driver.findElement(By.xpath(String.format(TEXT_INPUT_STEP_LOCATOR, label))).sendKeys(text);
     }
 }
