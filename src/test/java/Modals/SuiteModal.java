@@ -1,6 +1,6 @@
 package Modals;
 
-import Elements.Drobdown;
+import Elements.Dropdown;
 import Elements.Input;
 import Models.Suite;
 import Pages.RepositoryPage;
@@ -22,7 +22,7 @@ public class SuiteModal extends BaseModal {
             new Input(driver, "Suite name").write(suite.getSuiteName());
         }
         if (suite.getParentSuite() != null) {
-            new Drobdown(driver, "Parent suite").selectOption(suite.getParentSuite().getName());
+            new Dropdown(driver, "Parent suite").selectOption(suite.getParentSuite().getName());
         }
         if (suite.getDescription() != null) {
             new Input(driver, "Description").write(suite.getDescription());

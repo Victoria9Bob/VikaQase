@@ -6,11 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 @Log4j2
-public class Drobdown extends BaseElement {
+public class Dropdown extends BaseElement {
     private final static String DROPDOWN_LOCATOR = "//*[text()='%s']/ancestor::div/div/div[contains(@class,'notranslate')]";
     private final static String OPTION_LOCATOR = "//*[text()='%s']/following::div[contains(text(),'%s')]";
 
-    public Drobdown(WebDriver driver, String label) {
+    public Dropdown(WebDriver driver, String label) {
         super(driver, label);
     }
 

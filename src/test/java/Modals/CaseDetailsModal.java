@@ -1,86 +1,88 @@
 package Modals;
 
 import Elements.FormatedTextElement;
+import Elements.FormatedTextElementDropdown;
+import Elements.FormatedTextElementSteps;
 import Enums.*;
 import Models.Case;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class CaseDetailsModal extends BaseModal {
+    private final static String SUITE_NAME_LOCATOR = "//*[text()='%s']/ancestor::div/div/div/h3/span";
+    private final static String VISIBLE_TEXT_TITLE = "//div[contains(@class,'caseView')]/h1/div";
+
     public CaseDetailsModal(WebDriver driver) {
         super(driver);
     }
+
     @Step("Get case details info")
     public Case getCaseDetailsInfo(String caseName) {
         Case resultCase = new Case();
-        String title = new FormatedTextElement(driver, "Title").getTextTitle();
-        if (title != null) {
-            resultCase.setTitle(title);
-        }
-        String status = new FormatedTextElement(driver, "Status").getValue();
-        if (status != null) {
-            resultCase.setStatus(CaseStatus.fromString(status));
-        }
+        String title = getTextTitle("Title");
+        resultCase.setTitle(title);
+
+        String status = new FormatedTextElementDropdown(driver, "Status").getValue();
+        resultCase.setStatus(CaseStatus.fromString(status));
+
         String description = new FormatedTextElement(driver, "Description").getVisibleText();
-        if (description != null) {
-            resultCase.setDescription(description);
-        }
-        String suite = new FormatedTextElement(driver, "Suite").getSuiteName(caseName);
-        if (suite != null) {
-            resultCase.setSuite(CaseSuite.fromString(suite));
-        }
-        String severity = new FormatedTextElement(driver, "Severity").getValue();
-        if (severity != null) {
-            resultCase.setSeverity(CaseSeverity.fromString(severity));
-        }
-        String priority = new FormatedTextElement(driver, "Priority").getValue();
-        if (priority != null) {
-            resultCase.setPriority(CasePriority.fromString(priority));
-        }
-        String type = new FormatedTextElement(driver, "Type").getValue();
-        if (type != null) {
-            resultCase.setType(CaseType.fromString(type));
-        }
-        String layer = new FormatedTextElement(driver, "Layer").getValue();
-        if (layer != null) {
-            resultCase.setLayer(CaseLayer.fromString(layer));
-        }
-        String isFlaky = new FormatedTextElement(driver, "Is Flaky").getValue();
-        if (isFlaky != null) {
-            resultCase.setIsFlaky(CaseIsFlaky.fromString(isFlaky));
-        }
-        String milestone = new FormatedTextElement(driver, "Milestone").getValue();
-        if (milestone != null) {
-            resultCase.setMilestone(CaseMilestone.fromString(milestone));
-        }
-        String behavior = new FormatedTextElement(driver, "Behavior").getValue();
-        if (behavior != null) {
-            resultCase.setBehavior(CaseBehavior.fromString(behavior));
-        }
-        String automationStatus = new FormatedTextElement(driver, "Automation").getValue();
-        if (automationStatus != null) {
-            resultCase.setAutomationStatus(CaseAutomationStatus.fromString(automationStatus));
-        }
+        resultCase.setDescription(description);
+
+        String suite = getSuiteName(caseName, "Suite");
+        resultCase.setSuite(CaseSuite.fromString(suite));
+
+        String severity = new FormatedTextElementDropdown(driver, "Severity").getValue();
+        resultCase.setSeverity(CaseSeverity.fromString(severity));
+
+        String priority = new FormatedTextElementDropdown(driver, "Priority").getValue();
+        resultCase.setPriority(CasePriority.fromString(priority));
+
+        String type = new FormatedTextElementDropdown(driver, "Type").getValue();
+        resultCase.setType(CaseType.fromString(type));
+
+        String layer = new FormatedTextElementDropdown(driver, "Layer").getValue();
+        resultCase.setLayer(CaseLayer.fromString(layer));
+
+        String isFlaky = new FormatedTextElementDropdown(driver, "Is Flaky").getValue();
+        resultCase.setIsFlaky(CaseIsFlaky.fromString(isFlaky));
+
+        String milestone = new FormatedTextElementDropdown(driver, "Milestone").getValue();
+        resultCase.setMilestone(CaseMilestone.fromString(milestone));
+
+        String behavior = new FormatedTextElementDropdown(driver, "Behavior").getValue();
+        resultCase.setBehavior(CaseBehavior.fromString(behavior));
+
+        String automationStatus = new FormatedTextElementDropdown(driver, "Automation").getValue();
+        resultCase.setAutomationStatus(CaseAutomationStatus.fromString(automationStatus));
+
         String pre_conditions = new FormatedTextElement(driver, "Preconditions").getVisibleText();
-        if (pre_conditions != null) {
-            resultCase.setPre_conditions(pre_conditions);
-        }
+        resultCase.setPre_conditions(pre_conditions);
+
         String post_conditions = new FormatedTextElement(driver, "Postconditions").getVisibleText();
-        if (post_conditions != null) {
-            resultCase.setPost_conditions(post_conditions);
-        }
-        String action = new FormatedTextElement(driver, "Action").getStepText(1);
-        if (action != null) {
-            resultCase.setAction(action);
-        }
-        String inputData = new FormatedTextElement(driver, "Input data").getStepText(2);
-        if (inputData != null) {
-            resultCase.setInputData(inputData);
-        }
-        String expectedResult = new FormatedTextElement(driver, "Expected result").getStepText(3);
-        if (expectedResult != null) {
-            resultCase.setExpectedResult(expectedResult);
-        }
+        resultCase.setPost_conditions(post_conditions);
+
+        String action = new FormatedTextElementSteps(driver, "Action").getStepText(1);
+        resultCase.setAction(action);
+
+        String inputData = new FormatedTextElementSteps(driver, "Input data").getStepText(2);
+        resultCase.setInputData(inputData);
+
+        String expectedResult = new FormatedTextElementSteps(driver, "Expected result").getStepText(3);
+        resultCase.setExpectedResult(expectedResult);
+
         return resultCase;
+    }
+
+    public String getSuiteName(String caseName, String label) {
+        log.info(String.format("Take value from %s", label));
+        return driver.findElement(By.xpath(String.format(SUITE_NAME_LOCATOR, caseName))).getText();
+    }
+
+    public String getTextTitle(String label) {
+        log.info(String.format("Take value from %s", label));
+        return driver.findElement(By.xpath((VISIBLE_TEXT_TITLE))).getText();
     }
 }
