@@ -18,7 +18,7 @@ public class SuiteEditFormModal extends BaseModal {
         if (suiteName != null) {
             suite.setSuiteName(suiteName);
         }
-        String parentSuite = new EditSuiteElement(driver, "Parent suite").getDrobdownSuiteValue();
+        String parentSuite = new EditSuiteElement(driver, "Parent suite").getDropdownSuiteValue();
         if (parentSuite != null) {
             suite.setParentSuite(SuiteParentSuite.fromString(parentSuite));
 

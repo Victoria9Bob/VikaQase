@@ -14,14 +14,14 @@ public class RepositoryPage extends BasePage {
     protected final static String REPOSITORY_URL = "https://app.qase.io/project/DEMO?view=1&suite=2";
     private static final By CREATE_CASE = By.id("create-case-button");
     private static final By CREATE_SUITE = By.id("create-suite-button");
-    private static final String EDIT_SUITE = "//span[contains(text(),'%s')]//following::button[2]";
+    private static final String EDIT_SUITE = "//span[contains(text(),'%s')]//ancestor::h3//i[contains(@class,'pencil')]";
     private static final String DELETE_SUITE = "//span[contains(text(),'%s')]//following::button[4]";
     private static final String CONFIRM_DELETE_SUITE = "button[type*='submit']";
     private static final String CANCEL_BUTTON = "Cancel";
     private static final String MAX_WINDOW_BUTTON = "//button[contains(@class,'style_modeBtn-2mioU')]";
     private static final String OPEN_CASE_BUTTON = "//span[contains(text(),'%s')]/ancestor::td";
-    private static final String DELETE_CASE_BUTTON = "//div[contains(@class,'caseActions')]/button[2]";
-    private static final String DELETE_CASE_CONFIRM = "//div[contains(@class,'modal-footer')]/button[2]";
+    private static final String DELETE_CASE_BUTTON = "//div[contains(@class,'caseActions')]//i[contains(@class,'fa-trash')]";
+    private static final String DELETE_CASE_CONFIRM = "//button[contains(@class,'btn-danger')]";
 
     public RepositoryPage(WebDriver driver) {
         super(driver);
@@ -44,7 +44,7 @@ public class RepositoryPage extends BasePage {
         driver.get(REPOSITORY_URL);
         return this;
     }
-
+    //span[contains(text(),'%s')]//ancestor::h3//i[contains(@class,'pencil')]
     @Step("Click 'Create case'.")
     public CaseModal clickCreateCaseButton() {
         log.info("Click 'Create case'.");
