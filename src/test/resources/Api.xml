@@ -8,8 +8,8 @@
     </groups>
     <test name="Api tests">
         <classes>
-            <class name="Tests.ApiProjectTest"></class>
-            <class name="Tests.ApiDefectTest"></class>
+            <class name="tests.ApiProjectTest"></class>
+            <class name="tests.ApiDefectTest"></class>
         </classes>
     </test>
 </suite>

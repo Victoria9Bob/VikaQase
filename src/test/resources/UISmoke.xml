@@ -8,8 +8,8 @@
 </groups>
     <test name="UI tests">
         <classes>
-            <class name="Tests.CreateCaseTest"></class>
-            <class name="Tests.LoginTest"></class>
+            <class name="tests.CreateCaseTest"></class>
+            <class name="tests.LoginTest"></class>
         </classes>
     </test>
 </suite>

@@ -8,14 +8,14 @@
     </groups>
     <test name="Suite and login tests">
         <classes>
-            <class name="Tests.CreateSuiteTest"></class>
-            <class name="Tests.LoginTest"></class>
+            <class name="tests.CreateSuiteTest"></class>
+            <class name="tests.LoginTest"></class>
         </classes>
     </test>
     <test name="Case and plan tests">
         <classes>
-            <class name="Tests.CreateCaseTest"></class>
-            <class name="Tests.CreateTestPlanTest"></class>
+            <class name="tests.CreateCaseTest"></class>
+            <class name="tests.CreateTestPlanTest"></class>
         </classes>
     </test>
 </suite>
