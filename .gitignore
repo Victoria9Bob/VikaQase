@@ -1,6 +1,6 @@
 # Default ignored files
-/shelf/
-target
-.idea
+/.idea
+/target
+/.allure
+/.allure-results
 *.iml
-.allure

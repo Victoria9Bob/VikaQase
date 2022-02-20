@@ -6,10 +6,11 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.PropertyReader;
 
 @Log4j2
 public class TestPlansPage extends BasePage {
-    protected final static String TEST_PLANS_URL = "https://app.qase.io/plan/DEMO";
+    protected final static String TEST_PLANS_URL = System.getenv().getOrDefault("TEST_PLANS_URL", PropertyReader.getProperty("qase.test_plans_url"));
     private static final By TEST_PLANS_LABEL = By.xpath("//div[contains(@class,'container-fluid')]/h1");
     private static final By CREATE_PLAN = By.id("createButton");
     private static final By TEST_CASES_PAGE_LOCATOR = By.id("tab-test-cases");

@@ -8,10 +8,11 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.PropertyReader;
 
 @Log4j2
 public class RepositoryPage extends BasePage {
-    protected final static String REPOSITORY_URL = "https://app.qase.io/project/DEMO?view=1&suite=2";
+    protected final static String REPOSITORY_URL = System.getenv().getOrDefault("REPOSITORY_URL", PropertyReader.getProperty("qase.repository_url"));
     private static final By CREATE_CASE = By.id("create-case-button");
     private static final By CREATE_SUITE = By.id("create-suite-button");
     private static final String EDIT_SUITE = "//span[contains(text(),'%s')]//ancestor::h3//i[contains(@class,'pencil')]";
@@ -44,7 +45,7 @@ public class RepositoryPage extends BasePage {
         driver.get(REPOSITORY_URL);
         return this;
     }
-    //span[contains(text(),'%s')]//ancestor::h3//i[contains(@class,'pencil')]
+
     @Step("Click 'Create case'.")
     public CaseModal clickCreateCaseButton() {
         log.info("Click 'Create case'.");
@@ -82,6 +83,7 @@ public class RepositoryPage extends BasePage {
         jsClick(driver.findElement(By.xpath(DELETE_CASE_BUTTON)));
         log.info("Test case is deleted");
         jsClick(driver.findElement(By.xpath(DELETE_CASE_CONFIRM)));
+        log.info("Delete");
         return new CaseDetailsModal(driver);
     }
 

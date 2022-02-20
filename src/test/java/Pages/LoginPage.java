@@ -1,10 +1,10 @@
 package Pages;
 
-import io.qameta.allure.Link;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.PropertyReader;
 
 @Log4j2
 public class LoginPage extends BasePage {
@@ -16,7 +16,7 @@ public class LoginPage extends BasePage {
     private final static By CHECKBOX_AGREEMENT = By.name("agreement");
     private final static By CONFIRM_MESSAGE = By.cssSelector("h1");
     private final static By ERROR_MESSAGE = By.xpath("//div[contains(text(),'be a valid email address.')]");
-    protected final static String LOGIN_URL = "https://app.qase.io/login";
+    protected final static String LOGIN_URL = System.getenv().getOrDefault("LOGIN_URL", PropertyReader.getProperty("qase.login_url"));
 
 
     public LoginPage(WebDriver driver) {
@@ -38,7 +38,6 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Open page.")
-    @Link(BASE_URL)
     @Override
     public LoginPage open() {
         log.info("Open page");

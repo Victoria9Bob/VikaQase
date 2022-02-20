@@ -2,11 +2,10 @@ package Pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.PropertyReader;
 
 public abstract class BasePage {
-
-    protected final static String BASE_URL = "https://app.qase.io/signup";
-
+    protected final static String BASE_URL = System.getenv().getOrDefault("BASE_URL", PropertyReader.getProperty("qase.base_url"));
     WebDriver driver;
     WebDriverWait wait;
 
