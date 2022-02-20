@@ -8,6 +8,7 @@ import utils.PropertyReader;
 
 @Log4j2
 public class LoginPage extends BasePage {
+    private final static By SIGN_UP = By.linkText("Sign up");
     private final static By EMAIL_INPUT = By.id("inputEmail");
     private final static By PASSWORD_INPUT = By.id("inputPassword");
     private final static By CONFIRM_PASSWORD_INPUT = By.id("inputPasswordConfirm");
@@ -16,8 +17,6 @@ public class LoginPage extends BasePage {
     private final static By CHECKBOX_AGREEMENT = By.name("agreement");
     private final static By CONFIRM_MESSAGE = By.cssSelector("h1");
     private final static By ERROR_MESSAGE = By.xpath("//div[contains(text(),'be a valid email address.')]");
-    protected final static String LOGIN_URL = System.getenv().getOrDefault("LOGIN_URL", PropertyReader.getProperty("qase.login_url"));
-
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -45,17 +44,11 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    @Step("Open login page.")
-    public LoginPage openLoginPage() {
-        log.info("Open login page.");
-        driver.get(LOGIN_URL);
-        return this;
-    }
-
     @Step("Setting:" +
             "email:{email}" +
             "password:{password}")
     public RepositoryPage signUp(String email, String password) {
+        driver.findElement(SIGN_UP).click();
         log.info("Setting email and password");
         driver.findElement(EMAIL_INPUT).sendKeys(email);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);

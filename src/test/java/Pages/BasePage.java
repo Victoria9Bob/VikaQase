@@ -6,6 +6,7 @@ import utils.PropertyReader;
 
 public abstract class BasePage {
     protected final static String BASE_URL = System.getenv().getOrDefault("BASE_URL", PropertyReader.getProperty("qase.base_url"));
+    protected final static String PROJECT_ID = System.getenv().getOrDefault("PROJECT_ID", PropertyReader.getProperty("qase.project_id"));
     WebDriver driver;
     WebDriverWait wait;
 

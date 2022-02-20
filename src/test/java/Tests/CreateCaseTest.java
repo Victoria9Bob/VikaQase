@@ -12,8 +12,6 @@ public class CreateCaseTest extends BaseTest {
     Case testCase = new Case();
     private final String caseName = faker.name().title();
 
-
-
     @BeforeMethod(groups = "Smoke")
     public void setUp() {
         testCase = Case.builder().
@@ -35,7 +33,7 @@ public class CreateCaseTest extends BaseTest {
                 inputData(faker.harryPotter().spell()).
                 expectedResult(faker.harryPotter().character()).
                 build();
-        boolean isloggedIn = loginPage.openLoginPage().login(EMAIL, PASSWORD).isPageOpened();
+        boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
         Assert.assertTrue(isloggedIn);
     }
 
@@ -53,6 +51,5 @@ public class CreateCaseTest extends BaseTest {
     @AfterMethod(groups = "Smoke")
     public void setOut() {
         repositoryPage.deleteTestCase();
-//       Написать Assert
     }
 }

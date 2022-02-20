@@ -21,7 +21,7 @@ public class CreateSuiteTest extends BaseTest {
                 preconditions(faker.funnyName().name()).
                 build();
 
-        boolean isloggedIn = loginPage.openLoginPage().login(EMAIL, PASSWORD).isPageOpened();
+        boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
         Assert.assertTrue(isloggedIn);
     }
 

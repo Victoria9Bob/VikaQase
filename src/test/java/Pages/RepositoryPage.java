@@ -12,7 +12,7 @@ import utils.PropertyReader;
 
 @Log4j2
 public class RepositoryPage extends BasePage {
-    protected final static String REPOSITORY_URL = System.getenv().getOrDefault("REPOSITORY_URL", PropertyReader.getProperty("qase.repository_url"));
+    private final static String REPOSITORY_URI = System.getenv().getOrDefault("REPOSITORY_URI", PropertyReader.getProperty("qase.repository_uri"));
     private static final By CREATE_CASE = By.id("create-case-button");
     private static final By CREATE_SUITE = By.id("create-suite-button");
     private static final String EDIT_SUITE = "//span[contains(text(),'%s')]//ancestor::h3//i[contains(@class,'pencil')]";
@@ -41,8 +41,8 @@ public class RepositoryPage extends BasePage {
     @Step("Open repository page")
     @Override
     public RepositoryPage open() {
-        log.info("Open page.");
-        driver.get(REPOSITORY_URL);
+        log.info("Open repository page.");
+        driver.get(BASE_URL+REPOSITORY_URI+PROJECT_ID);
         return this;
     }
 

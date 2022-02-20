@@ -20,7 +20,7 @@ public class CreateTestPlanTest extends BaseTest {
                 description(faker.chuckNorris().fact()).
                 build();
 
-        boolean isloggedIn = loginPage.openLoginPage().login(EMAIL, PASSWORD).isPageOpened();
+        boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
         Assert.assertTrue(isloggedIn);
     }
 

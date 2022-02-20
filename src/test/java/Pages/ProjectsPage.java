@@ -1,14 +1,11 @@
 package Pages;
 
-import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utils.PropertyReader;
 
 @Log4j2
 public class ProjectsPage extends BasePage {
-    protected final static String PROJECTS_URL = System.getenv().getOrDefault("PROJECTS_URL", PropertyReader.getProperty("qase.projects_url"));
     protected final static By ADD_FILTER_BUTTON = By.className("add-filter-button");
 
     public ProjectsPage(WebDriver driver) {
@@ -25,11 +22,8 @@ public class ProjectsPage extends BasePage {
         return false;
     }
 
-    @Step("Open projects page.")
     @Override
-    public BasePage open() {
-        log.info("Open projects page.");
-        driver.get(PROJECTS_URL);
+    public BasePage open(){
         return this;
     }
 }
