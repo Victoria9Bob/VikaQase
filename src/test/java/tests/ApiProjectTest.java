@@ -13,6 +13,7 @@ import static org.testng.Assert.assertEquals;
 public class ApiProjectTest {
     Faker faker = new Faker();
     ProjectAdapter projectAdapter;
+    private final String projectCodeNegative = faker.name().lastName().toUpperCase(Locale.ROOT);
     private final String projectCode = faker.name().firstName().toUpperCase(Locale.ROOT);
     private final String title = faker.name().lastName();
 
@@ -44,11 +45,13 @@ public class ApiProjectTest {
 
     @Test(groups = "ApiTests")
     public void getProjectBTestNegative() {
-        projectAdapter.getProject(projectCode, 404);
+        projectAdapter.getProject(projectCodeNegative, 404);
     }
 
     @Test(groups = "ApiTests")
     public void getProjectTestPositive() {
+        String projectCode = "API";
+        String title = "TESTS";
         Project expectedProject = Project.builder().
                 title(title).
                 code(projectCode).

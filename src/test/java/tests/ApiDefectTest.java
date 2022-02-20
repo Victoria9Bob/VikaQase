@@ -1,6 +1,8 @@
 package tests;//package Tests;
 
 import adapters.DefectAdapter;
+import com.github.javafaker.Faker;
+import lombok.extern.log4j.Log4j2;
 import models.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -8,8 +10,9 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 
 import static org.testng.Assert.assertEquals;
-
+@Log4j2
 public class ApiDefectTest {
+    Faker faker = new Faker();
     DefectAdapter defectAdapter;
 
     @BeforeClass(groups = "ApiTests")
@@ -18,40 +21,24 @@ public class ApiDefectTest {
     }
 
     @Test(groups = "ApiTests")
-    public void
-    createDefectPositiveTest() {
-        String defectCode = "12";
-        int defectId = 1;
+    public void createDefectPositiveTest() {
+        String defectCode = "/DEMO";
+        int defectId = 15;
         ResponceBody<Object> expectedResponse = ResponceBody.
                 builder().
                 status(true).
-                result(ProjectResult.
+                result(DefectResult.
                         builder().
                         id(defectId).
                         build()).
                 build();
         Defect defect = Defect.
                 builder().
-                code(defectCode).
-                title("QWE").
-                actual_result("A").
-                severity(3).
-                milestone_id(1).
-                attachments(Arrays.asList(Attachments.
-                        builder().
-                        filename("guyg").
-                        build())).
-                custom_field(Arrays.asList(DefectCustomFields.
-                        builder().
-                        id("0").
-                        value("hl").
-                        build())).
-                tags(Arrays.asList(Tags.
-                        builder().
-                        title("hyfukyg").
-                        build())).
+                title(faker.name().title()).
+                actual_result(faker.chuckNorris().fact()).
+                severity(2).
                 build();
-        ResponceBody<Defect> actualResponse = defectAdapter.createDefect(defect);
+        ResponceBody<Defect> actualResponse = defectAdapter.createDefect(defectCode, defect);
         assertEquals(actualResponse, expectedResponse);
     }
 
@@ -64,34 +51,22 @@ public class ApiDefectTest {
                 status(true).
                 result(DefectResult.builder().
                         id(1).
-                        title("1").
+                        title("hg").
                         actual_result("12").
-                        severity("critical").
                         status("in_progress").
                         milestone_id(null).
-                        custom_fields(Arrays.asList(DefectCustomFields.builder().id("0").value("kyfg").build())).
-                        attachments(Attachments.builder().
-                                size(0).
-                                mime("").
-                                filename("").
-                                url("").
-                                build()).
+                        severity("normal").
+                        user_id(1).
+                        attachments(Arrays.asList()).
+                        custom_fields(Arrays.asList()).
                         created("2022-02-05 11:38:15").
-                        updated("2022-02-05 11:54:54").
-                        deleted("").
-                        resolved("").
-                        project_id(0).
-                        member_id(1).
-                        external_data("").
-                        tags(Arrays.asList(Tags.builder().
-                                title("kjy").
-                                internal_id(0).
-                                build()))).
+                        updated("2022-02-20 15:26:50").
+                        tags(Arrays.asList()).
+                        build()).
 
                 build();
-        ResponceBody<Object> expectedResponceResult = ResponceBody.builder().status(true).result(expectedDefect).build();
         ResponceBody<DefectResult> actualResponceBody = defectAdapter.getDefect(code, defectsId, 200);
-        assertEquals(actualResponceBody, expectedResponceResult);
+        assertEquals(actualResponceBody, expectedDefect);
     }
 
 }

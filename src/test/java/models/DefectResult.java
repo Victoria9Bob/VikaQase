@@ -12,17 +12,16 @@ public class DefectResult {
     int id;
     String title;
     String actual_result;
-    String severity;
     String status;
     String milestone_id;
+    String severity;
+    int user_id;
+    List<Attachments> attachments;
     List<DefectCustomFields> custom_fields;
-    Attachments attachments;
     String created;
     String updated;
-    String deleted;
     String resolved;
     int project_id;
-    int member_id;
     String external_data;
     List<Tags> tags;
 }

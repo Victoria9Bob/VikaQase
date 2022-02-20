@@ -10,7 +10,7 @@ import utils.PropertyReader;
 
 @Log4j2
 public class TestPlansPage extends BasePage {
-    private final static String TEST_PLANS_URI = System.getenv().getOrDefault("TEST_PLANS_URI", PropertyReader.getProperty("qase.test_plans_uri"));
+    private final static String TEST_PLANS_URI = "/plan";
     private static final By TEST_PLANS_LABEL = By.xpath("//div[contains(@class,'container-fluid')]/h1");
     private static final By CREATE_PLAN = By.id("createButton");
     private static final By TEST_CASES_PAGE_LOCATOR = By.id("tab-test-cases");
