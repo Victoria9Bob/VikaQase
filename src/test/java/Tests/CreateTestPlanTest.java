@@ -19,13 +19,12 @@ public class CreateTestPlanTest extends BaseTest {
                 title(title).
                 description(faker.chuckNorris().fact()).
                 build();
-
-        boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
-        Assert.assertTrue(isloggedIn);
     }
 
     @Test(groups = "Regression")
     public void createTestPlanPositive() throws InterruptedException {
+        boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
+        Assert.assertTrue(isloggedIn);
         testPlansPage.open().
                 clickCreatePlanButton().
                 fillForm(testPlans).

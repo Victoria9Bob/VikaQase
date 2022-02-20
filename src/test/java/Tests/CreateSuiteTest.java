@@ -20,13 +20,12 @@ public class CreateSuiteTest extends BaseTest {
                 description(faker.chuckNorris().fact()).
                 preconditions(faker.funnyName().name()).
                 build();
-
-        boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
-        Assert.assertTrue(isloggedIn);
     }
 
     @Test(groups = "Regression")
     public void createSuiteWithAllData() throws InterruptedException {
+        boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
+        Assert.assertTrue(isloggedIn);
         repositoryPage.open()
                 .clickCreateSuiteButton()
                 .fillForm(testSuite)

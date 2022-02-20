@@ -33,12 +33,12 @@ public class CreateCaseTest extends BaseTest {
                 inputData(faker.harryPotter().spell()).
                 expectedResult(faker.harryPotter().character()).
                 build();
-        boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
-        Assert.assertTrue(isloggedIn);
     }
 
     @Test(groups = "Smoke")
     public void createCaseWithAllData() throws InterruptedException {
+        boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
+        Assert.assertTrue(isloggedIn);
         repositoryPage.open().
                 clickCreateCaseButton().
                 fillForm(testCase).

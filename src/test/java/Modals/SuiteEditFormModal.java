@@ -4,9 +4,11 @@ import Elements.EditSuiteElement;
 import Enums.SuiteParentSuite;
 import Models.Suite;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class SuiteEditFormModal extends BaseModal {
+    private final static By DROPDOWN_LOCATOR =By.cssSelector("div[class$='singleValue']");
 
     public SuiteEditFormModal(WebDriver driver) {
         super(driver);
@@ -18,7 +20,7 @@ public class SuiteEditFormModal extends BaseModal {
         if (suiteName != null) {
             suite.setSuiteName(suiteName);
         }
-        String parentSuite = new EditSuiteElement(driver, "Parent suite").getDropdownSuiteValue();
+        String parentSuite = getDropdownSuiteValue();
         if (parentSuite != null) {
             suite.setParentSuite(SuiteParentSuite.fromString(parentSuite));
 
@@ -32,5 +34,8 @@ public class SuiteEditFormModal extends BaseModal {
             suite.setPreconditions(preconditions);
         }
         return suite;
+    }
+    public String getDropdownSuiteValue() {
+        return driver.findElement(DROPDOWN_LOCATOR).getText();
     }
 }
