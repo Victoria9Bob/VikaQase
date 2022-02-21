@@ -1,14 +1,14 @@
 # Description of the project 
 **Qase.io** is a cloud-based test management system that allows teams to efficiently store and organize product test information, as well as organize team work.  
 Main functionality:  
--Test Model Management  
--Preparation of test plans  
--Running Test Runs  
--Integration with popular task trackers  
--Team management and access rights  
--Working with Defects  
--Customization of fields and interface  
--API  
+- Test Model Management  
+- Preparation of test plans  
+- Running Test Runs  
+- Integration with popular task trackers  
+- Team management and access rights  
+- Working with Defects  
+- Customization of fields and interface  
+- API  
    
 # Applied frameworks:  
 -Selenium Webdriver  
