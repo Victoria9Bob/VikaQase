@@ -23,13 +23,11 @@ public class ApiDefectTest {
     @Test(groups = "ApiTests")
     public void createDefectPositiveTest() {
         String defectCode = "/DEMO";
-        int defectId = 15;
         ResponceBody<Object> expectedResponse = ResponceBody.
                 builder().
                 status(true).
-                result(DefectResult.
+                result(CreateDefectResult.
                         builder().
-                        id(defectId).
                         build()).
                 build();
         Defect defect = Defect.
