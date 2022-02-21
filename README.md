@@ -28,7 +28,7 @@ Main functionality:
 ### 1. UI tests:  
 1.1. Login tests:  
 - positive login test  
-- negative login test 
+- negative login test  
 1.2. Create of a suite  
 1.3. Create a test case  
 1.4. Create a test plan 
