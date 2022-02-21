@@ -12,10 +12,6 @@ public enum CaseBehavior {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static CaseBehavior fromString(String text) {
         for (CaseBehavior b : CaseBehavior.values()) {
             if (b.name.equalsIgnoreCase(text)) {
@@ -23,5 +19,9 @@ public enum CaseBehavior {
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

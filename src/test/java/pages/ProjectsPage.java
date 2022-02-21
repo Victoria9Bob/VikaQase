@@ -23,7 +23,7 @@ public class ProjectsPage extends BasePage {
     }
 
     @Override
-    public BasePage open(){
+    public BasePage open() {
         return this;
     }
 }

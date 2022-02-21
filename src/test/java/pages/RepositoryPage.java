@@ -1,11 +1,11 @@
 package pages;
 
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import modals.CaseDetailsModal;
 import modals.CaseModal;
 import modals.SuiteEditFormModal;
 import modals.SuiteModal;
-import io.qameta.allure.Step;
-import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -41,7 +41,7 @@ public class RepositoryPage extends BasePage {
     @Override
     public RepositoryPage open() {
         log.info("Open repository page.");
-        driver.get(BASE_URL+REPOSITORY_URI+PROJECT_ID);
+        driver.get(BASE_URL + REPOSITORY_URI + PROJECT_ID);
         return this;
     }
 

@@ -1,12 +1,11 @@
 package pages;
 
-import modals.PlanDetailsModal;
-import modals.TestPlanModal;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import modals.PlanDetailsModal;
+import modals.TestPlanModal;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import utils.PropertyReader;
 
 @Log4j2
 public class TestPlansPage extends BasePage {
@@ -39,33 +38,38 @@ public class TestPlansPage extends BasePage {
     @Step("Open Test Plans page.")
     public TestPlansPage open() {
         log.info("Open page.");
-        driver.get(BASE_URL+TEST_PLANS_URI+PROJECT_ID);
+        driver.get(BASE_URL + TEST_PLANS_URI + PROJECT_ID);
         return this;
     }
+
     @Step("Click 'Create plan'.")
     public TestPlanModal clickCreatePlanButton() {
         log.info("Click 'Create plan'.");
         driver.findElement(CREATE_PLAN).click();
         return new TestPlanModal(driver);
     }
+
     @Step("Open plan.")
     public PlanDetailsModal openTestPlan(String title) {
         log.info("Open plan.");
-        driver.findElement(By.xpath(String.format(OPEN_PLAN_LOCATOR,title))).click();
+        driver.findElement(By.xpath(String.format(OPEN_PLAN_LOCATOR, title))).click();
         return new PlanDetailsModal(driver);
     }
+
     @Step("Check, that suites are added.")
     public boolean isTestCaseAdded() {
         log.info("Check, that suites are added");
         driver.findElement(TEST_CASES_PAGE_LOCATOR).click();
         return driver.findElements(SUITES_LIST_LOCATOR).size() != 0;
     }
+
     @Step("Close test plan.")
     public TestPlansPage closeTestPlanButton() {
         log.info("Close test plan.");
         driver.findElement(CLOSE_PLAN_LOCATOR).click();
         return this;
     }
+
     @Step("Confirm to delete test plan.")
     public TestPlansPage deleteTestPlan(String title) {
         driver.findElement(By.xpath(String.format(DROPDOWN_PLAN_LOCATOR, title))).click();

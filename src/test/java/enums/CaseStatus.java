@@ -11,10 +11,6 @@ public enum CaseStatus {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static CaseStatus fromString(String text) {
         for (CaseStatus b : CaseStatus.values()) {
             if (b.name.equalsIgnoreCase(text)) {
@@ -22,5 +18,9 @@ public enum CaseStatus {
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

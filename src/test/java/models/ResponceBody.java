@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ResponceBody<T>{
+public class ResponceBody<T> {
     boolean status;
     T result;
 }

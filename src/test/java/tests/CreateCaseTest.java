@@ -1,16 +1,19 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import enums.*;
 import models.Case;
-import com.github.javafaker.Faker;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
 @Listeners(TestListener.class)
 public class CreateCaseTest extends BaseTest {
     Faker faker = new Faker();
-    Case testCase = new Case();
     private final String caseName = faker.name().title();
+    Case testCase = new Case();
 
     @BeforeMethod(groups = "Smoke")
     public void setUp() {

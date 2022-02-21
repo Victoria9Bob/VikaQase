@@ -19,10 +19,6 @@ public enum CaseType {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static CaseType fromString(String text) {
         for (CaseType b : CaseType.values()) {
             if (b.name.equalsIgnoreCase(text)) {
@@ -30,5 +26,9 @@ public enum CaseType {
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

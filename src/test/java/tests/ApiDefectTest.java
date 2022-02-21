@@ -3,13 +3,17 @@ package tests;//package Tests;
 import adapters.DefectAdapter;
 import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
-import models.*;
+import models.CreateDefectResult;
+import models.Defect;
+import models.DefectResult;
+import models.ResponceBody;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 
 import static org.testng.Assert.assertEquals;
+
 @Log4j2
 public class ApiDefectTest {
     Faker faker = new Faker();
@@ -66,5 +70,4 @@ public class ApiDefectTest {
         ResponceBody<DefectResult> actualResponceBody = defectAdapter.getDefect(code, defectsId, 200);
         assertEquals(actualResponceBody, expectedDefect);
     }
-
 }

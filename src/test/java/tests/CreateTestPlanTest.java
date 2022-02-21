@@ -1,10 +1,13 @@
 package tests;
 
-import models.TestPlans;
 import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
+import models.TestPlans;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
 @Log4j2
 @Listeners(TestListener.class)
@@ -41,6 +44,5 @@ public class CreateTestPlanTest extends BaseTest {
     @AfterMethod(groups = "Regression")
     public void setOut() {
         testPlansPage.closeTestPlanButton().deleteTestPlan(title);
-//        Assert
     }
 }

@@ -12,10 +12,6 @@ public enum CasePriority {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static CasePriority fromString(String text) {
         for (CasePriority b : CasePriority.values()) {
             if (b.name.equalsIgnoreCase(text)) {
@@ -23,5 +19,9 @@ public enum CasePriority {
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

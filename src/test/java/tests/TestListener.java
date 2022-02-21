@@ -19,21 +19,21 @@ public class TestListener implements ITestListener {
     @SneakyThrows
     @Override
     public void onTestSuccess(ITestResult result) {
-        log.info("Test "+result.getName()+" completed successfully.");
-      }
+        log.info("Test " + result.getName() + " completed successfully.");
+    }
 
     @SneakyThrows
     @Override
     public void onTestFailure(ITestResult result) {
-        log.error("Test "+result.getName()+" failed.");
-        WebDriver driver =(WebDriver)(result.getTestContext().getAttribute("driver"));
+        log.error("Test " + result.getName() + " failed.");
+        WebDriver driver = (WebDriver) (result.getTestContext().getAttribute("driver"));
         AllureUtils.attachScreenshot(driver);
 
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        log.error("Test "+result.getName()+" skipped.");
+        log.error("Test " + result.getName() + " skipped.");
     }
 
     @Override
@@ -43,7 +43,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailedWithTimeout(ITestResult result) {
-        log.error("Test "+result.getName()+" failed. Waiting period expired.");
+        log.error("Test " + result.getName() + " failed. Waiting period expired.");
     }
 
     @Override

@@ -10,6 +10,7 @@ public abstract class BaseAdapter {
     final String AUTRTH_TOKEN = System.getenv().getOrDefault("AUTRTH_TOKEN", PropertyReader.getProperty("qase.autrth_token"));
 
     Gson gson = new Gson();
+
     public String get(String uri, int expectedCode) {
         return
                 given().

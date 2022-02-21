@@ -14,6 +14,7 @@ public class BaseModal {
         this.driver = driver;
         wait = new WebDriverWait(driver, 10);
     }
+
     public void jsClick(WebElement element) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);

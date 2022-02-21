@@ -6,13 +6,10 @@ public enum SuiteParentSuite {
     PROJECTS("Projects"),
     WORKSPACE("Workspace");
 
-private  String name;
+    private String name;
+
     SuiteParentSuite(String name) {
         this.name = name;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public static SuiteParentSuite fromString(String text) {
@@ -22,5 +19,9 @@ private  String name;
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -12,10 +12,6 @@ public enum CaseLayer {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static CaseLayer fromString(String text) {
         for (CaseLayer b : CaseLayer.values()) {
             if (b.name.equalsIgnoreCase(text)) {
@@ -23,5 +19,9 @@ public enum CaseLayer {
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

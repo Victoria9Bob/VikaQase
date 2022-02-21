@@ -17,18 +17,19 @@ public class SelectTestCasesModal extends BaseModal {
     public SelectTestCasesModal(WebDriver driver) {
         super(driver);
     }
+
     @Step("Select suites.")
     public SelectTestCasesModal selectCases() {
         List<WebElement> suitesColomnList = driver.findElements(SUITES_COLUMN_LOCATOR);
-        log.info("Find -"+suitesColomnList.size()+" suites.");
+        log.info("Find -" + suitesColomnList.size() + " suites.");
         for (int i = 0; i < suitesColomnList.size(); i++) {
             log.info("Select suite -" + i);
-                driver.findElement(By.xpath(String.format(CHECKBOX_LOCATOR,i))).click();
-            }
+            driver.findElement(By.xpath(String.format(CHECKBOX_LOCATOR, i))).click();
+        }
         return this;
     }
 
-    public TestPlanModal clickDoneButton(){
+    public TestPlanModal clickDoneButton() {
         log.info("Click done button");
         jsClick(driver.findElement(DONE_BUTTON_LOCATOR));
         return new TestPlanModal(driver);

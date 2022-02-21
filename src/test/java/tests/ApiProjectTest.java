@@ -1,8 +1,8 @@
 package tests;
 
 import adapters.ProjectAdapter;
-import models.*;
 import com.github.javafaker.Faker;
+import models.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -12,10 +12,10 @@ import static org.testng.Assert.assertEquals;
 
 public class ApiProjectTest {
     Faker faker = new Faker();
-    ProjectAdapter projectAdapter;
     private final String projectCodeNegative = faker.name().lastName().toUpperCase(Locale.ROOT);
     private final String projectCode = faker.name().firstName().toUpperCase(Locale.ROOT);
     private final String title = faker.name().lastName();
+    ProjectAdapter projectAdapter;
 
     @BeforeClass(groups = "ApiTests")
     public void setUp() {
@@ -74,5 +74,4 @@ public class ApiProjectTest {
         ResponceBody<Project> actualResponceBody = projectAdapter.getProject(projectCode, 200);
         assertEquals(actualResponceBody, expectedResponceResult);
     }
-
 }

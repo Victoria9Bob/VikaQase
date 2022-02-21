@@ -3,12 +3,12 @@ package modals;
 import elements.Dropdown;
 import elements.Input;
 import elements.InputSteps;
-import models.Case;
-import pages.RepositoryPage;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import models.Case;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.RepositoryPage;
 
 @Log4j2
 public class CaseModal extends BaseModal {
@@ -18,6 +18,7 @@ public class CaseModal extends BaseModal {
     public CaseModal(WebDriver driver) {
         super(driver);
     }
+
     @Step("Fill case form.")
     public CaseModal fillForm(Case aCase) {
         if (aCase.getTitle() != null) {
@@ -76,17 +77,18 @@ public class CaseModal extends BaseModal {
         }
         return this;
     }
+
     @Step("Save Case.")
     public RepositoryPage clickSaveCaseButton() {
         log.info("Click save button");
         driver.findElement(SAVE_CASE).click();
         return new RepositoryPage(driver);
     }
+
     @Step("Add step.")
     public CaseModal addStepButton() {
         log.info("Add step");
         driver.findElement(ADD_STEP).click();
         return this;
     }
-
 }

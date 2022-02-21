@@ -4,9 +4,9 @@ import elements.FormatedTextElement;
 import elements.FormatedTextElementDropdown;
 import elements.FormatedTextElementSteps;
 import enums.*;
-import models.Case;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import models.Case;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

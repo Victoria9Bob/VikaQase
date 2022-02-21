@@ -2,17 +2,18 @@ package modals;
 
 import elements.EditSuiteElement;
 import enums.SuiteParentSuite;
-import models.Suite;
 import io.qameta.allure.Step;
+import models.Suite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class SuiteEditFormModal extends BaseModal {
-    private final static By DROPDOWN_LOCATOR =By.cssSelector("div[class$='singleValue']");
+    private final static By DROPDOWN_LOCATOR = By.cssSelector("div[class$='singleValue']");
 
     public SuiteEditFormModal(WebDriver driver) {
         super(driver);
     }
+
     @Step("Get suite details info.")
     public Suite getSuiteDetailsInfo() {
         Suite suite = new Suite();
@@ -35,6 +36,7 @@ public class SuiteEditFormModal extends BaseModal {
         }
         return suite;
     }
+
     public String getDropdownSuiteValue() {
         return driver.findElement(DROPDOWN_LOCATOR).getText();
     }

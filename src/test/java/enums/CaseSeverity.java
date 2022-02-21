@@ -15,10 +15,6 @@ public enum CaseSeverity {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static CaseSeverity fromString(String text) {
         for (CaseSeverity b : CaseSeverity.values()) {
             if (b.name.equalsIgnoreCase(text)) {
@@ -26,5 +22,9 @@ public enum CaseSeverity {
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

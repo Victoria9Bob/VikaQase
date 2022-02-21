@@ -2,12 +2,12 @@ package modals;
 
 import elements.Dropdown;
 import elements.Input;
-import models.Suite;
-import pages.RepositoryPage;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import models.Suite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import pages.RepositoryPage;
 
 @Log4j2
 public class SuiteModal extends BaseModal {
@@ -16,6 +16,7 @@ public class SuiteModal extends BaseModal {
     public SuiteModal(WebDriver driver) {
         super(driver);
     }
+
     @Step("Fill suite form.")
     public SuiteModal fillForm(Suite suite) {
         if (suite.getSuiteName() != null) {
@@ -32,6 +33,7 @@ public class SuiteModal extends BaseModal {
         }
         return this;
     }
+
     @Step("Save suite.")
     public RepositoryPage clickSaveSuite() {
         log.info("Click save button");

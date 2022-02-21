@@ -10,10 +10,6 @@ public enum CaseIsFlaky {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static CaseIsFlaky fromString(String text) {
         for (CaseIsFlaky b : CaseIsFlaky.values()) {
             if (b.name.equalsIgnoreCase(text)) {
@@ -21,5 +17,9 @@ public enum CaseIsFlaky {
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }

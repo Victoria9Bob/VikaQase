@@ -11,10 +11,6 @@ public enum CaseMilestone {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public static CaseMilestone fromString(String text) {
         for (CaseMilestone b : CaseMilestone.values()) {
             if (b.name.equalsIgnoreCase(text)) {
@@ -22,5 +18,9 @@ public enum CaseMilestone {
             }
         }
         return null;
+    }
+
+    public String getName() {
+        return name;
     }
 }
