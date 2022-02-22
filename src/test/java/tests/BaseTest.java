@@ -19,16 +19,12 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
     protected static final String EMAIL = System.getenv().getOrDefault("EMAIL", PropertyReader.getProperty("qase.email"));
     protected static final String PASSWORD = System.getenv().getOrDefault("PASSWORD", PropertyReader.getProperty("qase.password"));
+    protected final static String PROJECT_ID = "/DEMO";
     protected LoginPage loginPage;
     protected RepositoryPage repositoryPage;
     protected TestPlansPage testPlansPage;
 
     protected WebDriver driver;
-
-    public static void env() {
-        Properties properties = System.getProperties();
-        properties.list(System.out);
-    }
 
     @BeforeClass(alwaysRun = true)
     @Step("Open browser")

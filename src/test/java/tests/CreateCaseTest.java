@@ -42,7 +42,7 @@ public class CreateCaseTest extends BaseTest {
     public void createCaseWithAllData() throws InterruptedException {
         boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
         Assert.assertTrue(isloggedIn);
-        repositoryPage.open().
+        repositoryPage.open(PROJECT_ID).
                 clickCreateCaseButton().
                 fillForm(testCase).
                 clickSaveCaseButton();

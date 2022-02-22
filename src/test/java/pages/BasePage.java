@@ -4,9 +4,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropertyReader;
 
-public abstract class BasePage {
+public class BasePage {
     protected final static String BASE_URL = System.getenv().getOrDefault("BASE_URL", PropertyReader.getProperty("qase.base_url"));
-    protected final static String PROJECT_ID = "/DEMO";
     WebDriver driver;
     WebDriverWait wait;
 
@@ -15,11 +14,17 @@ public abstract class BasePage {
         wait = new WebDriverWait(driver, 10);
     }
 
-    public abstract boolean isPageOpened();
+    public boolean isPageOpened() {
+        return false;
+    }
 
-    public abstract boolean isErrorMessageDisplayed();
+    public boolean isErrorMessageDisplayed() {
+        return false;
+    }
 
-    public abstract BasePage open();
+    public BasePage open() {
+        return null;
+    }
 
 
     protected boolean isElementPresent(By locator) {

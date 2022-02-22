@@ -28,7 +28,7 @@ public class CreateTestPlanTest extends BaseTest {
     public void createTestPlanPositive() throws InterruptedException {
         boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
         Assert.assertTrue(isloggedIn);
-        testPlansPage.open().
+        testPlansPage.open(PROJECT_ID).
                 clickCreatePlanButton().
                 fillForm(testPlans).
                 clickAddCases().

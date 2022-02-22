@@ -38,10 +38,10 @@ public class RepositoryPage extends BasePage {
     }
 
     @Step("Open repository page")
-    @Override
-    public RepositoryPage open() {
+
+    public RepositoryPage open(String projectID) {
         log.info("Open repository page.");
-        driver.get(BASE_URL + REPOSITORY_URI + PROJECT_ID);
+        driver.get(BASE_URL + REPOSITORY_URI + projectID);
         return this;
     }
 

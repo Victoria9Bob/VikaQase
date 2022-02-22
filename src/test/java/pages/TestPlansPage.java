@@ -19,7 +19,6 @@ public class TestPlansPage extends BasePage {
     private static final String DROPDOWN_PLAN_LOCATOR = "//a[contains(text(),'%s')]/ancestor::tr//a[contains(@class,'btn-dropdown')]";
     private static final String DELETE_PLAN_LOCATOR = "//a[contains(text(),'%s')]/ancestor::tr//*[text() = 'Delete']";
     private static final By CONFIRM_DELETE = By.cssSelector("button[class$='btn-cancel']");
-
     public TestPlansPage(WebDriver driver) {
         super(driver);
     }
@@ -34,11 +33,11 @@ public class TestPlansPage extends BasePage {
         return false;
     }
 
-    @Override
+
     @Step("Open Test Plans page.")
-    public TestPlansPage open() {
+    public TestPlansPage open(String projectID) {
         log.info("Open page.");
-        driver.get(BASE_URL + TEST_PLANS_URI + PROJECT_ID);
+        driver.get(BASE_URL + TEST_PLANS_URI + projectID);
         return this;
     }
 

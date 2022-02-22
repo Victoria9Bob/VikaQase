@@ -29,7 +29,7 @@ public class CreateSuiteTest extends BaseTest {
     public void createSuiteWithAllData() throws InterruptedException {
         boolean isloggedIn = loginPage.open().login(EMAIL, PASSWORD).isPageOpened();
         Assert.assertTrue(isloggedIn);
-        repositoryPage.open()
+        repositoryPage.open(PROJECT_ID)
                 .clickCreateSuiteButton()
                 .fillForm(testSuite)
                 .clickSaveSuite();
@@ -41,6 +41,5 @@ public class CreateSuiteTest extends BaseTest {
     @AfterMethod(groups = "Regression")
     public void setOut() {
         repositoryPage.deleteTestSuite(suiteName);
-//        Assert
     }
 }

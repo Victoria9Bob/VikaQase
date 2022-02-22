@@ -10,9 +10,4 @@ public class Defect {
     String title;
     String actual_result;
     int severity;
-//    int milestone_id;
-//    List<Attachments> attachments;
-//    List<DefectCustomFields> custom_field;
-//    List<Tags> tags;
-
 }
